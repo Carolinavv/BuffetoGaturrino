@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sofre-generar-pedido-client-side-solution",
+    "id": "941315bd-7d87-4428-b5ed-8c2535fb50e0",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/sofre-generar-pedido.sppkg"
+  }
+}

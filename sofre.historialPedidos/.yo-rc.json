@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.7.0",
+    "libraryName": "sofre-historial-pedidos",
+    "libraryId": "dc8ecdc9-dbc4-4244-9c20-aacb3a0af39b",
+    "environment": "spo",
+    "packageManager": "npm",
+    "isCreatingSolution": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

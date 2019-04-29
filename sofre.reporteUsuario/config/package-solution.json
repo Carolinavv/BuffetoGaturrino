@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sofre-reporte-usuario-client-side-solution",
+    "id": "e2770d6a-d728-494d-ae29-8842a8bd76c3",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/sofre-reporte-usuario.sppkg"
+  }
+}

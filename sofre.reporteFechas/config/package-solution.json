@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sofre-reporte-fechas-client-side-solution",
+    "id": "08989837-8d9d-4adf-b955-f77ba7e4d655",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/sofre-reporte-fechas.sppkg"
+  }
+}

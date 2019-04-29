@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sofre-actualizar-menu-client-side-solution",
+    "id": "6cd221ef-0c0b-40c5-9dc2-b465452937b3",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/sofre-actualizar-menu.sppkg"
+  }
+}

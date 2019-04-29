@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sofre-reporte-menu-client-side-solution",
+    "id": "48ef18ed-7665-4b8a-9d9b-5e4375341e25",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/sofre-reporte-menu.sppkg"
+  }
+}

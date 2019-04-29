@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "reporte-por-menu-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reportePorMenu/ReportePorMenuWebPart.js",
+          "manifest": "./src/webparts/reportePorMenu/ReportePorMenuWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReportePorMenuWebPartStrings": "lib/webparts/reportePorMenu/loc/{locale}.js"
+  }
+}

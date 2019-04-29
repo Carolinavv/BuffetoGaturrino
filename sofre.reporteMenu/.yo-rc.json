@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.7.0",
+    "libraryName": "sofre-reporte-menu",
+    "libraryId": "48ef18ed-7665-4b8a-9d9b-5e4375341e25",
+    "environment": "spo",
+    "packageManager": "npm",
+    "isCreatingSolution": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

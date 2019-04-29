@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sofre-historial-pedidos-client-side-solution",
+    "id": "dc8ecdc9-dbc4-4244-9c20-aacb3a0af39b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/sofre-historial-pedidos.sppkg"
+  }
+}
