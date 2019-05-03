@@ -1,0 +1,18 @@
+Carta
+    ID
+    Titulo
+    Categoria
+    Disponibidad
+    precio
+
+Guarnicion
+    ID
+    Titulo
+    Disponibilidad
+
+Ingredientes 
+    ID
+    Titulo
+    Disponibilidad
+
+
