@@ -35,8 +35,6 @@ const aderezosList: IDropdownOption[] = [
   { key: 'mostaza', text: 'Mostaza' },
   { key: 'sal', text: 'Sal' }
 ];
-
-let arrayGuarnicion: string[] = [];
 export default class GenerarPedido extends React.Component<IGenerarPedidoProps, IGenerarPedidoState> {
 
   constructor(props) {
@@ -45,21 +43,25 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
       listGuarni: []
     };
     this.getListGuarni.bind(this);
+
+
+  }
+  public componentDidMount(){
+    getListGuarni
+
+
   }
 
   public render(): React.ReactElement<IGenerarPedidoProps> {
 
     // this.getListGuarni();
 
-    // const aderezos: JSX.Element[] = this.state.listGuarni.map((titulo: string, index: number, listaGuarni: string[]): JSX.Element => {
-    //   return <li>{titulo}</li>;
-    // });
-
     return (
       <div className={ styles.generarPedido }>
         <div className={ styles.container }>
+        <form action="">
+        </form>
           <div className={styles.row}>
-            {/* <ul>{aderezos}</ul> */}
             <div className={styles.col6}>
               <TextField
                 label="Nombre y Apellido"
@@ -94,15 +96,15 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
                 className={styles.formblock}
                 defaultSelectedKey="ninguno"
                 label="Guarnición"
-                options={this.state.listGuarni.map()}
-                
+                options={this.state.listGuarni}
+                onLoad={this.getListGuarni}
             />
-              <button onClick={this.getListGuarni}>demo</button>
               <Dropdown
                 className={styles.formblock}
                 defaultSelectedKeys={['ninguno']}
                 multiSelect
                 label="Aderezos"
+                options={aderezosList}
               />
             </div>
           </div>
@@ -166,25 +168,24 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
     console.dir(option);
   }
 
+
   public getListGuarni() {
     sp.web.lists.getByTitle("guarnicion").items.select("Title").orderBy("Title", true).get().then((data: any[]) => {
+      
+      let arrayGuarnicion: string[] = [];
+      let guarniDropdown: IDropdownOption[] =  [
+        { key: 'guarniHeader', text: 'Elija una guarnicion', itemType: DropdownMenuItemType.Header },
+        { key: 'ninguno', text: 'Ninguno' }
+      ];
+
       for (let index = 0; index < data.length; index++) {
         arrayGuarnicion[index] = data[index]["Title"];
+        guarniDropdown.push({key: index.toString(), text: arrayGuarnicion[index]});
       }
-      console.log(arrayGuarnicion);
+      this.setState({listGuarni: guarniDropdown});
+      console.log(guarniDropdown);
+      console.log(this.state.listGuarni);
     });
-    let arraynuevo={};
-    arrayGuarnicion.map((value,index)=>{arraynuevo[index] = value})
-    // let index = 0;
-    // let optionList {};
-    // arrayGuarnicion.forEach(option =>
-    //   optionList.add(
-    //     new Option(index = index + 1, option)
-    //   )
-    // );
-
-
-    // this.setState({ listGuarni: arrayGuarnicion });
 
   }
 
