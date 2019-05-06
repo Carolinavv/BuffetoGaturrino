@@ -1,7 +1,7 @@
 import {IGroup} from 'office-ui-fabric-react/lib/DetailsList'
 import IListaMenuItem from './IListaMenuItem';
 
-export interface IlistaMenuStates{
+export interface IListaMenuStates{
     groups: IGroup[];
     items: IListaMenuItem[];
     indexCarta: number;

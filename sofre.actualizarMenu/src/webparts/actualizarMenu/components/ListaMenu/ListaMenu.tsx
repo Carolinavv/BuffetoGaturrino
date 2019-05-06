@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DetailsList, DetailsListLayoutMode, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
-import { IListaMenuState } from './IListaMenuStates';
+import { DetailsList, DetailsListLayoutMode, IColumn, Selection, SelectionMode, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
+import { IListaMenuStates } from './IListaMenuStates';
 
 
 export default class ListaMenu extends React.Component<{} , IListaMenuState>{
@@ -31,6 +31,11 @@ export default class ListaMenu extends React.Component<{} , IListaMenuState>{
     render(){
         return(
             <div>
+                <DetailsList
+                    items={this.state.items}
+                    groups={this.state.groups}
+                    columns={this._columns}
+                />
 
             </div>
         );
