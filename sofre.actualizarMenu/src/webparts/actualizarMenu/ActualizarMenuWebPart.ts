@@ -6,16 +6,27 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField
 } from '@microsoft/sp-webpart-base';
+import pnp from 'sp-pnp-js';
 
 import * as strings from 'ActualizarMenuWebPartStrings';
 import ActualizarMenu from './components/ActualizarMenu';
 import { IActualizarMenuProps } from './components/IActualizarMenuProps';
+import { PnPClientStorage } from '@pnp/common';
 
 export interface IActualizarMenuWebPartProps {
   description: string;
 }
 
 export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActualizarMenuWebPartProps> {
+
+
+  public onInit(): Promise<void> {
+    return super.onInit().then(_=>{
+      pnp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IActualizarMenuProps > = React.createElement(
