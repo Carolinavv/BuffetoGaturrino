@@ -3,13 +3,13 @@ import { DetailsList, DetailsListLayoutMode, IColumn, Selection, SelectionMode, 
 import { IListaMenuStates } from './IListaMenuStates';
 
 
-export default class ListaMenu extends React.Component<{} , IListaMenuState>{
+export default class ListaMenu extends React.Component<{} , IListaMenuStates>{
     private _columns : IColumn[];
     constructor(props){
         super(props);
 
         this.state = {
-            items: null,
+            items: [],
             groups: 
             [
                 { key: 'groupoCarta',       name: 'Carta',       startIndex: 0, count: 0 },
@@ -26,9 +26,9 @@ export default class ListaMenu extends React.Component<{} , IListaMenuState>{
              { key: 'categoria', name: 'Categoría', fieldName: 'categoria', minWidth: 100, maxWidth: 200 },
              { key: 'disponibilidad', name: 'Disponibilidad', fieldName: 'disponibilidad', minWidth: 100, maxWidth: 200 },
              { key: 'precio', name: 'Precio', fieldName: 'precio', minWidth: 100, maxWidth: 200 }
-        ]
+        ];
     }
-    render(){
+    public render(){
         return(
             <div>
                 <DetailsList
@@ -41,5 +41,5 @@ export default class ListaMenu extends React.Component<{} , IListaMenuState>{
         );
     }
 
-    obtenerMenu(){}
+    public obtenerMenu(){}
 }
