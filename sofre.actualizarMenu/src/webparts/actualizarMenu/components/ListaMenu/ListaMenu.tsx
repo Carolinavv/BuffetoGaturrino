@@ -4,12 +4,15 @@ import { IListaMenuStates } from './IListaMenuStates';
 
 
 export default class ListaMenu extends React.Component<{} , IListaMenuStates>{
+    private _root = React.createRef<IDetailsList>();
     private _columns : IColumn[];
     constructor(props){
         super(props);
 
         this.state = {
-            items: [],
+            items: [
+                    { ID: 1, nombre: 'Ravioles', categoria: 'pasta', disponibilidad: true, precio: 200 }
+            ],
             groups: 
             [
                 { key: 'groupoCarta',       name: 'Carta',       startIndex: 0, count: 0 },
@@ -32,6 +35,7 @@ export default class ListaMenu extends React.Component<{} , IListaMenuStates>{
         return(
             <div>
                 <DetailsList
+                    componentRef={this._root}
                     items={this.state.items}
                     groups={this.state.groups}
                     columns={this._columns}
