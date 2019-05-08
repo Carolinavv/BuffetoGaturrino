@@ -5,6 +5,8 @@ import { IActualizarMenuProps } from './IActualizarMenuProps';
 import ListaMenu from './ListaMenu/ListaMenu';
 import './Header/HeaderMenu';
 import HeaderMenu from './Header/HeaderMenu';
+import BarraComando from './BarraComandos/BarraComando';
+
 
 export default class ActualizarMenu extends React.Component<IActualizarMenuProps, {}> {
   public render(): React.ReactElement<IActualizarMenuProps> {
@@ -13,6 +15,7 @@ export default class ActualizarMenu extends React.Component<IActualizarMenuProps
         <div className={ styles.container }>
           <div className={ styles.row }>
             <HeaderMenu title={ this.props.title } />
+             <BarraComando />
              <ListaMenu />
             </div>
         </div> 
