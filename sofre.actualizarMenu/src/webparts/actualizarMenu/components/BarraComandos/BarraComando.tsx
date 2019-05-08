@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import '@pnp/polyfill-ie11';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export default class BarraComando extends React.Component<IButtonProps,{}>{
     public render(): JSX.Element {
@@ -13,7 +15,7 @@ export default class BarraComando extends React.Component<IButtonProps,{}>{
                   data-automation-id="nuevo"
                   disabled={disabled}
                   checked={checked}
-                  iconProps={{ iconName: 'nuevo1' }}
+                  iconProps={{ iconName: 'AddNotes' }}
                   text="Nuevo"
                   menuProps={{
                     items: [
@@ -39,7 +41,7 @@ export default class BarraComando extends React.Component<IButtonProps,{}>{
                   data-automation-id="eliminar"
                   disabled={disabled}
                   checked={checked}
-                  iconProps={{ iconName: 'Eliminar1' }}
+                  iconProps={{ iconName: 'Delete' }}
                   text="Eliminar"
                   split={true}
                   
@@ -49,7 +51,7 @@ export default class BarraComando extends React.Component<IButtonProps,{}>{
                   data-automation-id="modificar"
                   disabled={disabled}
                   checked={checked}
-                  iconProps={{ iconName: 'Modificar1' }}
+                  iconProps={{ iconName: 'Edit' }}
                   text="Modificar"
                 />
               </div>
