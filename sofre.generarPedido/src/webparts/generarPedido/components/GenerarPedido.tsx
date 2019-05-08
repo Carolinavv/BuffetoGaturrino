@@ -3,14 +3,22 @@ import styles from './GenerarPedido.module.scss';
 import { IGenerarPedidoProps } from './IGenerarPedidoProps';
 import { IGenerarPedidoState } from './IGenerarPedidoState';
 import { escape } from '@microsoft/sp-lodash-subset';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
 import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { FormPedido } from './FormPedido/FormPedido';
+import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
+import { render } from 'react-dom';
+import { inputProperties } from '@uifabric/utilities/lib';
 
-
+const tiposComida: IDropdownOption[] = [
+  { key: 'sandwich', text: 'Sandwich' },
+  { key: 'plato', text: 'Al Plato' },
+  { key: 'ensalada', text: 'Ensalada' }
+];
 
 
 const options: IDropdownOption[] = [
@@ -35,33 +43,30 @@ const aderezosList: IDropdownOption[] = [
   { key: 'mostaza', text: 'Mostaza' },
   { key: 'sal', text: 'Sal' }
 ];
+            
 export default class GenerarPedido extends React.Component<IGenerarPedidoProps, IGenerarPedidoState> {
 
   constructor(props) {
     super(props);
     this.state = {
-      listGuarni: []
+      listGuarni: [],
+      listCategoria: []
     };
     this.getListGuarni.bind(this);
 
 
   }
-  public componentDidMount(){
-    getListGuarni
 
-
+  public componentDidMount() {
+    this.getListGuarni();
   }
 
   public render(): React.ReactElement<IGenerarPedidoProps> {
 
-    // this.getListGuarni();
-
     return (
       <div className={ styles.generarPedido }>
         <div className={ styles.container }>
-        <form action="">
-        </form>
-          <div className={styles.row}>
+          <div className={ styles.row }>
             <div className={styles.col6}>
               <TextField
                 label="Nombre y Apellido"
@@ -69,96 +74,18 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
                 required
               />
             </div>
-            <div className={styles.col6}>
-              <Dropdown
+            <div className={ styles.col6 }>
+              <Dropdown 
                 defaultSelectedKey="default"
                 label="Elija el tipo de comida"
-                options={options}
-                
+                placeholder="Seleccione una opcion"
+                required={true}
+                options={this.state.listCategoria}
+                onChanged={this.getTipoComida}
               />
             </div>
           </div>
-          <div className={styles.row}>
-            <div className={styles.col6}>
-              <Dropdown
-                className={styles.formblock}
-                defaultSelectedKey="default"
-                label="Elija el plato"
-                options={options}
-              />
-              <div className={styles.checkbox}>
-                <Checkbox label="Cubiertos" className={styles.formcheckbox} />
-                <Checkbox label="Pan" className={styles.formcheckbox} />
-              </div>
-            </div>
-            <div className={styles.col6}>
-              <Dropdown
-                className={styles.formblock}
-                defaultSelectedKey="ninguno"
-                label="Guarnición"
-                options={this.state.listGuarni}
-                onLoad={this.getListGuarni}
-            />
-              <Dropdown
-                className={styles.formblock}
-                defaultSelectedKeys={['ninguno']}
-                multiSelect
-                label="Aderezos"
-                options={aderezosList}
-              />
-            </div>
-          </div>
-          <div className={styles.morePedidos}></div>
-          <div className={styles.formprecio}>Subtotal: subtotalporpnp</div>
-          <div className={styles.row}>
-            <div className={styles.col9}>
-              <ChoiceGroup
-                defaultSelectedKey="B"
-                options={[
-                  {
-                    key: 'A',
-                    text: 'Llevar pedido a',
-                    onRenderField: (props, render) => {
-                      return (
-                        <div>
-                          <div className={styles.coltext1}>
-                            {render!(props)}
-                          </div>
-                          <TextField
-                            className={styles.coltext2}
-                            disabled={props ? !props.checked : false}
-                            placeholder="Oficina"
-                            required
-                          />
-                        </div>
-                      );
-                    }
-                  },
-                  {
-                    key: 'B',
-                    text: 'Retiro en el Buffet',
-                  }
-                ]}
-                onChange={this._onChange}
-                label="Seleccione una opcion"
-              />
-            </div>
-            <div className={styles.col3}>
-              <div>
-                <DefaultButton
-                  className={styles.buttonagregar}
-                  text="Agregar Pedido"
-                // onClick= {this.mostrarPantalla()}
-                />
-              </div>
-              <div>
-                <DefaultButton
-                  className={styles.button}
-                  text="Enviar Pedido"
-                />
-              </div>
-            </div>
-          </div>
+          <FormPedido {...this.props}></FormPedido>
         </div>
       </div>
     );
@@ -168,9 +95,12 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
     console.dir(option);
   }
 
+  private getTipoComida = (option?: IDropdownOption, index?: number) => {
+    alert(option.text);
+  }
 
   public getListGuarni() {
-    sp.web.lists.getByTitle("guarnicion").items.select("Title").orderBy("Title", true).get().then((data: any[]) => {
+    sp.web.lists.getByTitle("guarnicion").items.select("Title").orderBy("Title", true).top(5000).get().then((data: any[]) => {
       
       let arrayGuarnicion: string[] = [];
       let guarniDropdown: IDropdownOption[] =  [
@@ -183,8 +113,18 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
         guarniDropdown.push({key: index.toString(), text: arrayGuarnicion[index]});
       }
       this.setState({listGuarni: guarniDropdown});
-      console.log(guarniDropdown);
-      console.log(this.state.listGuarni);
+    });
+
+    sp.web.lists.getByTitle("categoria").items.select("Title").orderBy("Title").top(5000).get().then((data: any[]) => {
+      
+      let categoriaDropdown: IDropdownOption[] = [];
+
+      for (let index = 0; index < data.length; index++) {
+        categoriaDropdown.push({key: index.toString(), text: data[index]["Title"]});
+      }
+
+      this.setState({listCategoria: categoriaDropdown});
+
     });
 
   }

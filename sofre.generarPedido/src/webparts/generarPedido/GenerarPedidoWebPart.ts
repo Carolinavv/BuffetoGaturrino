@@ -10,6 +10,7 @@ import {
 import * as strings from 'GenerarPedidoWebPartStrings';
 import GenerarPedido from './components/GenerarPedido';
 import { IGenerarPedidoProps } from './components/IGenerarPedidoProps';
+import "@pnp/polyfill-ie11";  
 import { sp } from "@pnp/sp";
 
 export interface IGenerarPedidoWebPartProps {
@@ -27,6 +28,7 @@ export default class GenerarPedidoWebPart extends BaseClientSideWebPart<IGenerar
   }
 
   public render(): void {
+    //async y await
     const element: React.ReactElement<IGenerarPedidoProps > = React.createElement(
       GenerarPedido,
       {
