@@ -4,8 +4,9 @@ import { IListaMenuStates } from './IListaMenuStates';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import '@pnp/polyfill-ie11';
 import { sp } from '@pnp/sp';
+import '../../config/Listas';
 
-export default class ListaMenu extends React.Component<{} , IListaMenuStates>{
+export default class ListaMenu extends React.Component< any, IListaMenuStates>{
     private _columns : IColumn[];
     // const MyIcon = () => <Icon iconName="CompassNW" className="ms-IconExample" />;
     constructor(props){
@@ -39,13 +40,13 @@ export default class ListaMenu extends React.Component<{} , IListaMenuStates>{
                     items={this.state.items}
                     groups={this.state.groups}
                     columns={this._columns}
-                    onRenderItemColumn={this._onRenderColumn}
+                    onRenderRow={this._onLoadTable}
                 />
             </div>
         );
     }
 
-    private _onRenderColumn(){
+    private _onLoadTable(): JSX.Element{
         sp.web
             .lists
             .getByTitle("carta")
@@ -57,5 +58,8 @@ export default class ListaMenu extends React.Component<{} , IListaMenuStates>{
                 .then((items: any[])=>{
                     console.log(items);
                 });
+
+        console.log(Listas.Carta);
+        return; 
     }
 }

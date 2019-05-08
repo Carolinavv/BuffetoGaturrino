@@ -14,7 +14,7 @@ import { IActualizarMenuProps } from './components/IActualizarMenuProps';
 import { PnPClientStorage } from '@pnp/common';
 
 export interface IActualizarMenuWebPartProps {
-  description: string;
+  title: string;
 }
 
 export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActualizarMenuWebPartProps> {
@@ -32,7 +32,7 @@ export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActual
     const element: React.ReactElement<IActualizarMenuProps > = React.createElement(
       ActualizarMenu,
       {
-        description: this.properties.description
+        title: this.properties.title
       }
     );
 
@@ -58,8 +58,8 @@ export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActual
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('title', {
+                  label: strings.TituloFieldLabel
                 })
               ]
             }

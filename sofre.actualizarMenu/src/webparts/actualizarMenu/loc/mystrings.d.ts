@@ -1,7 +1,7 @@
 declare interface IActualizarMenuWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  TituloFieldLabel: string;
 }
 
 declare module 'ActualizarMenuWebPartStrings' {
