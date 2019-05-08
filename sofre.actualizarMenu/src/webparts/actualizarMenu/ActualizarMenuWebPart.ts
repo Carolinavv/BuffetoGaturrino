@@ -52,14 +52,15 @@ export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActual
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: strings.PropertyPaneDescription,
           },
           groups: [
             {
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('title', {
-                  label: strings.TituloFieldLabel
+                  label: "Titulo" 
+                  // strings.DescriptionFieldLabel
                 })
               ]
             }

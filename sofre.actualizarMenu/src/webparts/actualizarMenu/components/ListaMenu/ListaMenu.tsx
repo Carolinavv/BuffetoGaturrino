@@ -59,7 +59,7 @@ export default class ListaMenu extends React.Component< any, IListaMenuStates>{
                     console.log(items);
                 });
 
-        console.log(Listas.Carta);
+        // console.log(Listas.Carta);
         return; 
     }
 }
