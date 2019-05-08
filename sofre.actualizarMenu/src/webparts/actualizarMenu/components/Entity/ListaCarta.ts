@@ -1,11 +1,13 @@
-export class ListaCarta{
-    Id: number;
-    Title: string;
-    Categoria: string;
-    Disponibilidad: boolean;
-    Precio: number;
+// import
 
-    contructor(){
+// export class ListaCarta{
+//     Id: number;
+//     Title: string;
+//     Categoria: string;
+//     Disponibilidad: boolean;
+//     Precio: number;
+
+//     contructor(){
         
-    }
-}
+//     }
+// }

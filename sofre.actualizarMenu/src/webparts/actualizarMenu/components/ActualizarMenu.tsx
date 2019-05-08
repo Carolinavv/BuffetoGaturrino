@@ -10,11 +10,9 @@ export default class ActualizarMenu extends React.Component<IActualizarMenuProps
       <div className={ styles.actualizarMenu }>
         <div className={ styles.container }>
           <div className={ styles.row }>
-            <div className={ styles.column }>
             <p>gg</p>
              <ListaMenu></ListaMenu>
             </div>
-          </div>
         </div> 
       </div>
     );

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, IColumn, Selection, SelectionMode, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
 import { IListaMenuStates } from './IListaMenuStates';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import '@pnp/polyfill-ie11'
+import '@pnp/polyfill-ie11';
 import { sp } from '@pnp/sp';
 
 export default class ListaMenu extends React.Component<{} , IListaMenuStates>{
