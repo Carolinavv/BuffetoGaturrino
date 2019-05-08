@@ -5,44 +5,12 @@ import { IGenerarPedidoState } from './IGenerarPedidoState';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
-import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { FormPedido } from './FormPedido/FormPedido';
+import { PantallaCarga } from './PantallaCarga/PantallaCarga';
 import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
 import { render } from 'react-dom';
 import { inputProperties } from '@uifabric/utilities/lib';
-
-const tiposComida: IDropdownOption[] = [
-  { key: 'sandwich', text: 'Sandwich' },
-  { key: 'plato', text: 'Al Plato' },
-  { key: 'ensalada', text: 'Ensalada' }
-];
-
-
-const options: IDropdownOption[] = [
-  { key: 'default', text: 'Select an option' },
-  { key: 'fruitsHeader', text: 'Fruits', itemType: DropdownMenuItemType.Header },
-  { key: 'apple', text: 'Apple' },
-  { key: 'banana', text: 'Banana' },
-  { key: 'orange', text: 'Orange', disabled: true },
-  { key: 'grape', text: 'Grape' },
-  { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
-  { key: 'vegetablesHeader', text: 'Vegetables', itemType: DropdownMenuItemType.Header },
-  { key: 'broccoli', text: 'Broccoli' },
-  { key: 'carrot', text: 'Carrot' },
-  { key: 'lettuce', text: 'Lettuce' }
-];
-
-const aderezosList: IDropdownOption[] = [
-  { key: 'aderezosHeader', text: 'Seleccione los aderezos que desea', itemType: DropdownMenuItemType.Header },
-  { key: 'ninguno', text: 'Ninguno' },
-  { key: 'mayonesa', text: 'Mayonesa' },
-  { key: 'ketchup', text: 'Ketchup' },
-  { key: 'mostaza', text: 'Mostaza' },
-  { key: 'sal', text: 'Sal' }
-];
             
 export default class GenerarPedido extends React.Component<IGenerarPedidoProps, IGenerarPedidoState> {
 
@@ -50,9 +18,12 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
     super(props);
     this.state = {
       listGuarni: [],
-      listCategoria: []
+      listCategoria: [],
+      opcion: null,
+      mostrarPedido: false,
+      loadingScreen: false
     };
-    this.getListGuarni.bind(this);
+    this.getListGuarni = this.getListGuarni.bind(this);
 
 
   }
@@ -85,18 +56,29 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
               />
             </div>
           </div>
-          <FormPedido {...this.props}></FormPedido>
+          {this.state.loadingScreen &&
+          <PantallaCarga />
+          }
+          {this.state.mostrarPedido &&
+          <FormPedido opcion={this.state.opcion}></FormPedido>
+          }
         </div>
       </div>
     );
   }
 
-  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
-    console.dir(option);
-  }
-
   private getTipoComida = (option?: IDropdownOption, index?: number) => {
-    alert(option.text);
+
+    if (option.key == 'ninguno') {
+      this.setState({ opcion: option.text, mostrarPedido: false });  
+    }
+    else {
+      this.setState({loadingScreen: true});
+      this.setState({ mostrarPedido: false });
+      setTimeout(() => {
+        this.setState({ opcion: option.text, mostrarPedido: true, loadingScreen: false });
+      }, 1000);
+    }
   }
 
   public getListGuarni() {
@@ -117,7 +99,9 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
 
     sp.web.lists.getByTitle("categoria").items.select("Title").orderBy("Title").top(5000).get().then((data: any[]) => {
       
-      let categoriaDropdown: IDropdownOption[] = [];
+      let categoriaDropdown: IDropdownOption[] = [
+        { key: 'ninguno', text: 'Ninguno' }
+      ];
 
       for (let index = 0; index < data.length; index++) {
         categoriaDropdown.push({key: index.toString(), text: data[index]["Title"]});

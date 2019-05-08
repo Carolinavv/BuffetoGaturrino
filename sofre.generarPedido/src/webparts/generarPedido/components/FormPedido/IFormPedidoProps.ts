@@ -1,3 +1,3 @@
 export interface IFormPedidoProps {
-  description: string;
+  opcion: string;
 }
