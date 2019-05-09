@@ -9,8 +9,7 @@ export default class BarraComando extends React.Component<IButtonProps,{}>{
         const { disabled, checked } = this.props;
 
         return (
-            <div>
-              <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>
+              <div style={{ display: 'flex', alignItems: 'stretch', height: '40px'}}>
                 <CommandBarButton
                   data-automation-id="nuevo"
                   disabled={disabled}
@@ -55,7 +54,6 @@ export default class BarraComando extends React.Component<IButtonProps,{}>{
                   text="Modificar"
                 />
               </div>
-            </div>
           );
         }
       }

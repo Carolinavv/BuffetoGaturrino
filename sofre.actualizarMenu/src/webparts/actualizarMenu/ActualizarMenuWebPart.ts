@@ -4,7 +4,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneButton
 } from '@microsoft/sp-webpart-base';
 import pnp from 'sp-pnp-js';
 
@@ -32,7 +33,7 @@ export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActual
     const element: React.ReactElement<IActualizarMenuProps > = React.createElement(
       ActualizarMenu,
       {
-        title: this.properties.title
+        title: this.properties.title || strings.TitleFieldLabel
       }
     );
 
@@ -52,15 +53,14 @@ export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActual
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription,
+            description: strings.PropertyPaneTitle,
           },
           groups: [
             {
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('title', {
-                  label: "Titulo" 
-                  // strings.DescriptionFieldLabel
+                  label: strings.TitleFieldLabel
                 })
               ]
             }

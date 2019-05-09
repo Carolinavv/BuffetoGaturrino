@@ -1,13 +1,5 @@
-// import
-
-// export class ListaCarta{
-//     Id: number;
-//     Title: string;
-//     Categoria: string;
-//     Disponibilidad: boolean;
-//     Precio: number;
-
-//     contructor(){
-        
-//     }
-// }
+export class ListaCarta{
+    
+    // ("Id", "Title", "carCategoria/Title", "carDisponibilidad", "carPrecio")
+  public constructor(){}   
+}
