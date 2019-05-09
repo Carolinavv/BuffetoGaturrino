@@ -14,7 +14,8 @@ export default class BarraComando extends React.Component<{}, {}> {
         <CommandBar
           items={items}
           farItems={farItems}
-          className="commandbar"
+          className={style.commandbar}
+
         />
     );
   }
@@ -71,7 +72,8 @@ const items = [
 const farItems = [
   {
     key:"search",
-    onRender:() => <SearchBox placeholder="Search" className="searchBox" />
+    onRender:() => <SearchBox placeholder="Search" className={style.searchBox} underlined={true}
+    />
   },
   {
     key:"michi",
