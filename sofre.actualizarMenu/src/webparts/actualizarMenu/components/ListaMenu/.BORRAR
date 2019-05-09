@@ -15,4 +15,5 @@ Ingredientes
     Titulo
     Disponibilidad
 
-
+ .select("Id", "Title", "carCategoria/Title")
+.expand("carCategoria")
