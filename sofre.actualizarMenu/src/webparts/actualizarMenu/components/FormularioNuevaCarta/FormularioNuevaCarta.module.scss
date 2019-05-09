@@ -1,8 +1,17 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .container{
+    max-width: 700px;
+    margin: 0px auto;
     background-color: cornflowerblue;
 }
+
+.row {
+    @include ms-Grid-row;
+    @include ms-fontColor-white;
+    background-color: $ms-color-themeDark;
+    padding: 20px;
+  }
 
 .ancho200{
     width: 200px;
