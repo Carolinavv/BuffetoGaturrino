@@ -7,15 +7,18 @@ export class ListaCarta{
   public static Strings = CARTA;
 
   public Name: string;
-  public Items : IListaMenuItem[];
+  public Items: IListaMenuItem[];
+  public ItemsCount: number;
+  // static get ItemsCount() {
+  //     return (async () => await this.up())();
+  // }
 
   public constructor(){
     this.Name = 'carta';
-    this.getFields();
   }   
 
-  public getFields() {
-    sp.web
+  public async updateItems() {
+    this.Items = await sp.web
       .lists
       .getByTitle(ListaCarta.Strings.Props.Title)
         .items
@@ -29,7 +32,7 @@ export class ListaCarta{
         .orderBy("Modified", true)
         .get()
         .then((items: any[])=>{
-          this.Items = items.map((item)=>{
+          return items.map((item)=>{
             return {
               ID:             item.Id,
               Titulo:         item.Title,
@@ -38,7 +41,8 @@ export class ListaCarta{
               Precio:         item.carPrecio
             };
           });
-          console.log(this.Items.length + ' Items cargados.');
         });
+        this.ItemsCount = this.Items.length;
+        console.log(this.Items.length + ' Items cargados.');
   }
 }
