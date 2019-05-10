@@ -15,11 +15,13 @@ export default class FormularioNuevaCarta extends React.Component<any, any>{
         const textFieldIdPrecio = getId('precio');
         const { disabled, checked } = this.props;
         return (
+            <div className="formularioCarta">
             <div className="ms-Grid" dir="ltr">
                 <div className="ms-Grid-row">
 
                     <h3>Carta</h3>
-                    <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg6" >
+                    <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg1" ></div>
+                    <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg5" >
                         <Label htmlFor={textFieldIdNombre}>Nombre:</Label>
                         <TextField className={styles.ancho200} id={textFieldIdNombre} />
 
@@ -36,8 +38,18 @@ export default class FormularioNuevaCarta extends React.Component<any, any>{
                                 ]
                             }
                         />
+                        <Toggle className={styles.ancho200}
+                        defaultChecked={true}
+                        label='Disponibilidad'
+                        onAriaLabel='This toggle is checked. Press to uncheck.'
+                        offAriaLabel='This toggle is unchecked. Press to check.'
+                        onText='On'
+                        offText='Off'
+                        onFocus={() => console.log('onFocus called')}
+                        onBlur={() => console.log('onBlur called')}
+                    />
                     </div>
-                    <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg6" >
+                    <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg5" >
                         <Label htmlFor={textFieldIdPrecio}>Precio:</Label>
                         <TextField className={styles.ancho200} id={textFieldIdPrecio} />
 
@@ -54,23 +66,12 @@ export default class FormularioNuevaCarta extends React.Component<any, any>{
                                 ]
                             }
                         />
-                                        <Toggle className={styles.ancho200}
-                        defaultChecked={true}
-                        label='Disponibilidad'
-                        onAriaLabel='This toggle is checked. Press to uncheck.'
-                        offAriaLabel='This toggle is unchecked. Press to check.'
-                        onText='On'
-                        offText='Off'
-                        onFocus={() => console.log('onFocus called')}
-                        onBlur={() => console.log('onBlur called')}
-                    />
+                        
                     </div>
-
-
-
-
+                    <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg1" ></div>
                 </div>
-
+                
+                
                 <div className="ms-Grid-row">
                     <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg3" ></div>
                     <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg3" >
@@ -93,24 +94,17 @@ export default class FormularioNuevaCarta extends React.Component<any, any>{
                     </div>
                     <div className="ms-Grid-col ms-sm6 ms-md4 ms-lg3" ></div>
                 
-                
                 </div>
 
-
-
-                    
-                    
-
             </div>
+        </div>
         );
-
     }
 
     private _log(str: string): () => void {
         return (): void => {
             console.log(str);
         };
-
     }
 }
 
