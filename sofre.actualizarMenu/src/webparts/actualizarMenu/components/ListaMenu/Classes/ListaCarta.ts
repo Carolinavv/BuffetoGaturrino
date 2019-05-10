@@ -1,5 +1,5 @@
-import { CARTA } from '../../Structure/SListas';
-import { IListaCartaFieldsItems } from './IListas';
+import { CARTA } from '../../../Structure/SListas';
+import IListaMenuItem from '../IListaMenuItem';
 import '@pnp/polyfill-ie11';
 import { sp } from '@pnp/sp';
 
@@ -7,15 +7,14 @@ export class ListaCarta{
   static Strings = CARTA;
 
   Name: string;
-  Items : IListaCartaFieldsItems[];
-
+  Items : IListaMenuItem[];
 
   public constructor(){
-   this.Items = this._LoadContent();
+    this.Name = 'carta';
+    this.getFields();
   }   
 
-  private _LoadContent():IListaCartaFieldsItems[] {
-    let res: IListaCartaFieldsItems[];
+  public getFields() {
     sp.web
       .lists
       .getByTitle(ListaCarta.Strings.Props.Title)
@@ -30,15 +29,16 @@ export class ListaCarta{
         .orderBy("Modified", true)
         .get()
         .then((items: any[])=>{
-          console.log(items);
-          res = [{
-            Id: 0,
-            Titulo: 's',
-            Categoria: ['s'],
-            Disponibilidad: true,
-            Precio: 0
-          }];
+          this.Items = items.map((item)=>{
+            return {
+              ID:             item.Id,
+              Titulo:         item.Title,
+              Categoria:      item.carCategoria.Title,
+              Disponibilidad: item.carDisponibilidad,
+              Precio:         item.carPrecio
+            };
+          })
+          console.log(this.Items.length + ' Items cargados.');
         });;
-        return res;   
   }
 }
