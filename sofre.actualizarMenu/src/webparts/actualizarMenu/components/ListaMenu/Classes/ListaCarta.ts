@@ -4,10 +4,10 @@ import '@pnp/polyfill-ie11';
 import { sp } from '@pnp/sp';
 
 export class ListaCarta{
-  static Strings = CARTA;
+  public static Strings = CARTA;
 
-  Name: string;
-  Items : IListaMenuItem[];
+  public Name: string;
+  public Items : IListaMenuItem[];
 
   public constructor(){
     this.Name = 'carta';
@@ -37,8 +37,8 @@ export class ListaCarta{
               Disponibilidad: item.carDisponibilidad,
               Precio:         item.carPrecio
             };
-          })
+          });
           console.log(this.Items.length + ' Items cargados.');
-        });;
+        });
   }
 }

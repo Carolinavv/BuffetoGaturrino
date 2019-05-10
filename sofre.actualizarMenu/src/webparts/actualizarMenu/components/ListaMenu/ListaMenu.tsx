@@ -9,7 +9,7 @@ import { sp } from '@pnp/sp';
 export default class ListaMenu extends React.Component< any, IListaMenuStates>{
     private _columns : IColumn[];
     // const MyIcon = () => <Icon iconName="CompassNW" className="ms-IconExample" />;
-    _lstCarta: ListaCarta;
+    private _lstCarta: ListaCarta;
         
     constructor(props){
         super(props);

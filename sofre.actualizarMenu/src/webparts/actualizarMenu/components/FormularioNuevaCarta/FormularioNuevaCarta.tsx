@@ -10,7 +10,7 @@ import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 
 export default class FormularioNuevaCarta extends React.Component<any, any>{
-    render() {
+    public render() {
         const textFieldIdNombre = getId('nombre');
         const textFieldIdPrecio = getId('precio');
         const { disabled, checked } = this.props;
@@ -109,7 +109,7 @@ export default class FormularioNuevaCarta extends React.Component<any, any>{
     private _log(str: string): () => void {
         return (): void => {
             console.log(str);
-        }
+        };
 
     }
 }
