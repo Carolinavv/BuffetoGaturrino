@@ -21,9 +21,9 @@ export default class ListaMenu extends React.Component< any, IListaMenuStates>{
             countIngrediente: 0,
             groups: 
             [
-                { key: 'groupoCarta',       name: 'Carta',       startIndex: 0, count: this.state.countCarta },
-                { key: 'groupoGuarnicion',  name: 'Guarnicion',  startIndex: this.state.countCarta, count: this.state.countGuarnicion },
-                { key: 'groupoIngrediente', name: 'Ingrediente', startIndex: this.state.countGuarnicion, count: this.state.countIngrediente }
+                // { key: 'groupoCarta',       name: 'Carta',       startIndex: 0, count: this.state.countCarta },
+                // { key: 'groupoGuarnicion',  name: 'Guarnicion',  startIndex: this.state.countCarta, count: this.state.countGuarnicion },
+                // { key: 'groupoIngrediente', name: 'Ingrediente', startIndex: this.state.countGuarnicion, count: this.state.countIngrediente }
             ]
         };
         // PROBAR CON SETEAR ESTADO LUEGO DE CREAR ESTADO INICIAL, ES DECIR, PROBAR ACA.
@@ -48,10 +48,10 @@ export default class ListaMenu extends React.Component< any, IListaMenuStates>{
         );
     }
 
-    private async _onLoadTable(){
-        this.setState({
-            items: this._lstCarta.Items,
-            countCarta: this._lstCarta.Items.length
-        })
+    private _onLoadTable(){
+        // this.setState({
+        //     items: this._lstCarta.Items,
+        //     countCarta: this._lstCarta.Items.length
+        // })
     }
 }
