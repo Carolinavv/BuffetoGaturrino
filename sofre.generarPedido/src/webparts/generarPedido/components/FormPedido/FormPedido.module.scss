@@ -1,12 +1,10 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
-.generarPedido {
-  background-color: whitesmoke;
+.formPedido {
   
   .container {
     max-width: 1200px;
     margin: 0px auto;
-    padding: 1em;
   }
 
   .formblock, .formcheckbox, .formtype {
