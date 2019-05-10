@@ -13,6 +13,15 @@
     padding: 20px;
   }
 
+  .column6 {
+    @include ms-Grid-col;
+    @include ms-lg10;
+    @include ms-xl8;
+    @include ms-xlPush2;
+    @include ms-lgPush1;
+  }
+
+
 .ancho200{
     width: 200px;
 }
