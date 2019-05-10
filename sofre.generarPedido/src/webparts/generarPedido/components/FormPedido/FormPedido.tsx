@@ -42,110 +42,117 @@ export class FormPedido extends React.Component<IFormPedidoProps, IFormPedidoSta
     super(props);
     this.state = {
       opcion: null,
-      listGuarni: []
+      listGuarni: [],
+      listCarta: []
     };
     this.getListGuarni.bind(this);
+    this.getListComida.bind(this);
 
   }
 
   public async componentWillReceiveProps(next_props) {
     await this.setState({ opcion: next_props.opcion });
+    console.log("------"+ this.state.opcion)
   }
 
   public componentDidMount() {
     this.componentWillReceiveProps(this.props);
+    this.getListComida(this.props.opcion);
     this.getListGuarni();
   }
-
+  
   public render(): React.ReactElement<IFormPedidoProps> {
+   
+   
     console.log(this.state.opcion);
-      return (
-        <div className={ styles.formPedido }>
-          <div className={ styles.container }>
-            <div>{this.state.opcion}</div>
-            <div className={styles.row}>
-              <div className={styles.col6}>
-                <Dropdown
-                  className={styles.formblock}
-                  defaultSelectedKey="default"
-                  label="Elija el plato"
-                  options={options}
-                />
-                <div className={styles.checkbox}>
-                  <Checkbox label="Cubiertos" className={styles.formcheckbox} />
-                  <Checkbox label="Pan" className={styles.formcheckbox} />
-                </div>
-              </div>
-              <div className={styles.col6}>
-                <Dropdown
-                  className={styles.formblock}
-                  defaultSelectedKey={'ninguno'}
-                  label="Guarnición"
-                  options={this.state.listGuarni}
-                  onLoad={this.getListGuarni}
-                />
-                <Dropdown
-                  className={styles.formblock}
-                  defaultSelectedKeys={["ninguno"]}
-                  multiSelect
-                  label="Aderezos"
-                  options={aderezosList}
-                />
+   
+   
+    return (
+      <div className={styles.formPedido}>
+        <div className={styles.container}>
+          <div className={styles.row}>
+            <div className={styles.col6}>
+              <Dropdown
+                className={styles.formblock}
+                defaultSelectedKey="default"
+                label="Elija el plato"
+                options={this.state.listCarta}
+              />
+              <div className={styles.checkbox}>
+                <Checkbox label="Cubiertos" className={styles.formcheckbox} />
+                <Checkbox label="Pan" className={styles.formcheckbox} />
               </div>
             </div>
-            <div className={styles.morePedidos} id="agregar"></div>
-            <div className={styles.formprecio}>Subtotal: subtotalporpnp</div>
-            <div className={styles.row}>
-              <div className={styles.col9}>
-                <ChoiceGroup
-                  defaultSelectedKey="B"
-                  options={[
-                    {
-                      key: 'A',
-                      text: 'Llevar pedido a',
-                      onRenderField: (props, render) => {
-                        return (
-                          <div>
-                            <div className={styles.coltext1}>
-                              {render!(props)}
-                            </div>
-                            <TextField
-                              className={styles.coltext2}
-                              disabled={props ? !props.checked : false}
-                              placeholder="Oficina"
-                              required
-                            />
+            <div className={styles.col6}>
+              <Dropdown
+                className={styles.formblock}
+                defaultSelectedKey={'ninguno'}
+                label="Guarnición"
+                options={this.state.listGuarni}
+                onLoad={this.getListGuarni}
+              />
+              <Dropdown
+                className={styles.formblock}
+                defaultSelectedKeys={["ninguno"]}
+                multiSelect
+                label="Aderezos"
+                options={aderezosList}
+              />
+            </div>
+          </div>
+          <div className={styles.morePedidos} id="agregar"></div>
+          <div className={styles.formprecio}>Subtotal: subtotalporpnp</div>
+          <div className={styles.row}>
+            <div className={styles.col9}>
+              <ChoiceGroup
+                defaultSelectedKey="B"
+                options={[
+                  {
+                    key: 'A',
+                    text: 'Llevar pedido a',
+                    onRenderField: (props, render) => {
+                      return (
+                        <div>
+                          <div className={styles.coltext1}>
+                            {render!(props)}
                           </div>
-                        );
-                      }
-                    },
-                    {
-                      key: 'B',
-                      text: 'Retiro en el Buffet',
+                          <TextField
+                            className={styles.coltext2}
+                            disabled={props ? !props.checked : false}
+                            placeholder="Oficina"
+                            required
+                          />
+                        </div>
+                      );
                     }
-                  ]}
-                  onChange={this._onChange}
-                  label="Seleccione una opcion"
+                  },
+                  {
+                    key: 'B',
+                    text: 'Retiro en el Buffet',
+                  }
+                ]}
+                onChange={this._onChange}
+                label="Seleccione una opcion"
+              />
+            </div>
+            <div className={styles.col3}>
+              <div>
+                <DefaultButton
+                  className={styles.buttonagregar}
+                  text="Agregar Pedido"
                 />
               </div>
-              <div className={styles.col3}>
-                <div>
-                  <DefaultButton
-                    className={styles.buttonagregar}
-                    text="Agregar Pedido"
-                  />
-                </div>
-                <div>
-                  <DefaultButton
-                    className={styles.button}
-                    text="Enviar Pedido"
-                  />
-                </div>
+              <div>
+                <DefaultButton
+                  className={styles.button}
+                  text="Enviar Pedido"
+                />
               </div>
             </div>
           </div>
         </div>
-      );
+      </div>
+    );
   }
 
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
@@ -170,4 +177,24 @@ export class FormPedido extends React.Component<IFormPedidoProps, IFormPedidoSta
 
   }
 
+  public getListComida(Categoria: string){
+    let cartaDropdown: IDropdownOption[] = [
+      { key: 'comidaHeader', text: 'Elija una su plato de comida', itemType: DropdownMenuItemType.Header },
+      { key: 'ninguno', text: 'Ninguno' }
+    ];
+    
+    sp.web.lists.getByTitle("carta").items.select("Title","carCategoria/Title").expand("carCategoria").filter("carCategoria/Title eq"+`'${Categoria}'`).top(5000).get().then((data: any[]) => {
+      // console.log(data)
+      
+
+      for (let index = 0; index < data.length; index++) {
+        cartaDropdown.push({ key: index.toString(), text: data[index]["Title"] });
+      }
+  
+      this.setState({ listCarta: cartaDropdown });
+  
+    });
+  }
+  
 }
+
