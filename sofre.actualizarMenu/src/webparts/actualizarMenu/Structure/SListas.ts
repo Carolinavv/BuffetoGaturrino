@@ -1,4 +1,4 @@
-const Carta = {
+export  const CARTA = {
     Props: {
         Title: 'carta'
     },
@@ -14,7 +14,7 @@ const Carta = {
     }
 };
 
-const Guarnicion = {
+export const GUARNICION = {
     Props: {
         Title: "guarnicion"
     },
@@ -25,7 +25,7 @@ const Guarnicion = {
     }
 };
 
-const Ingredientes = {
+export const INGREDIENTES = {
     Props: {
         Title: 'ingredientes'
     },
