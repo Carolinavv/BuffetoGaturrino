@@ -7,6 +7,10 @@ import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import style from './BarraComando.module.scss';
 
+
+
+
+
 export default class BarraComando extends React.Component<{}, {}> {
   public render(): JSX.Element {
 
@@ -25,7 +29,7 @@ const items = [
   {
     key: 'nuevo',
     name: 'Nuevo',
-    cacheKey: 'myCacheKey',
+    cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
     iconProps: {
       iconName: 'Add'
     },
@@ -35,7 +39,6 @@ const items = [
         {
           key: 'carta',
           name: 'Carta',
-          onClick: ()=>{alert("tocado")},
           iconProps: {
             iconName: 'EatDrink'
           }
