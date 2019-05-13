@@ -147,8 +147,8 @@ function _buildColumns(): IColumn[] {
       fieldName: 'tipoDePlato',
       minWidth: 16,
       maxWidth: 16,
-      onRender: () => {
-        return this.state.items["tipoDePlato"];
+      onRender: (item: any) => {
+        return item["tipoDePlato"];
       }
     },
     {
@@ -157,8 +157,8 @@ function _buildColumns(): IColumn[] {
       fieldName: 'nombreDePlato',
       minWidth: 16,
       maxWidth: 16,
-      onRender: () => {
-        return this.state.items["nombreDePlato"];
+      onRender: (item:any) => {
+        return item["nombreDePlato"];
       }
     },
     {
@@ -167,9 +167,9 @@ function _buildColumns(): IColumn[] {
       fieldName: 'guarnicion',
       minWidth: 16,
       maxWidth: 16,
-      onRender: () => {
-        if(this.state.items["guarnicion"]) {
-         return this.state.items["nombre"];
+      onRender: (item: any) => {
+        if(item["guarnicion"]) {
+         return item["guarnicion"];
         } else return "No";
       }
     }, {
@@ -178,10 +178,10 @@ function _buildColumns(): IColumn[] {
       fieldName: 'ingredientes',
       minWidth: 16,
       maxWidth: 16,
-      onRender: () => {
-        if (this.state.items["ingredientes"]) {
+      onRender: (item: any) => {
+        if (item["ingredientes"]) {
           let ingredientes: string;
-          this.state.items["ingredientes"].forEach(ingrediente => {
+          item["ingredientes"].forEach(ingrediente => {
             ingredientes += ingrediente+' ';
           });
           return ingredientes;
