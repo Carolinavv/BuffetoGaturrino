@@ -21,3 +21,26 @@ c:\users\gmolina\documents\visual studio 2013\Projects\BGsite\Listas\bin\Debug\M
 c:\users\gmolina\documents\visual studio 2013\Projects\BGsite\Listas\bin\Debug\Microsoft.Data.Edm.xml
 c:\users\gmolina\documents\visual studio 2013\Projects\BGsite\Listas\obj\Debug\Listas.exe
 c:\users\gmolina\documents\visual studio 2013\Projects\BGsite\Listas\obj\Debug\Listas.pdb
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Listas.exe.config
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\obj\Debug\Listas.exe
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\obj\Debug\Listas.pdb
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Listas.exe
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Listas.pdb
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.Office.Client.Policy.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.Office.Client.TranslationServices.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.Office.SharePoint.Tools.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.Online.SharePoint.Client.Tenant.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.ProjectServer.Client.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.DocumentManagement.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.Publishing.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.Runtime.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.Runtime.Windows.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.Search.Applications.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.Search.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.Taxonomy.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.UserProfiles.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.SharePoint.Client.WorkflowServices.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.Data.Edm.dll
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\bin\Debug\Microsoft.Data.Edm.xml
+C:\Proyects\GitHub\BuffetoGaturrino\scripts\intalacion\Listas\obj\Debug\Listas.csprojResolveAssemblyReference.cache

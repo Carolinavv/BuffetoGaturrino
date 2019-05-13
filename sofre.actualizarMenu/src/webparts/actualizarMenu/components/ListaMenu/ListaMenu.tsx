@@ -20,9 +20,6 @@ export default class ListaMenu extends React.Component< any, IListaMenuStates>{
             new ListGroup('groupoCarta', 'Carta'),
             new ListGroup('groupoGuarnicion', 'Guarnicion'),
             new ListGroup('groupoIngrediente', 'Ingrediente')
-            // { key: 'groupoCarta',       name: 'Carta',       startIndex: 0, count: this.state.countCarta },
-            // { key: 'groupoGuarnicion',  name: 'Guarnicion',  startIndex: this.state.countCarta, count: this.state.countGuarnicion },
-            // { key: 'groupoIngrediente', name: 'Ingrediente', startIndex: this.state.countGuarnicion, count: this.state.countIngrediente }
         ]
         this.state = {
             items: [], //RadioBtnOn, RadioBtnOff
@@ -48,7 +45,6 @@ export default class ListaMenu extends React.Component< any, IListaMenuStates>{
                     groups={this.state.groups}
                     columns={this._columns}
                 />
-                <button onClick={()=>{this.updateLists()}}>act</button>
             </div>
         );
     }

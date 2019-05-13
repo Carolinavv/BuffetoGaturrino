@@ -25,7 +25,7 @@ const items = [
   {
     key: 'nuevo',
     name: 'Nuevo',
-    cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+    cacheKey: 'myCacheKey',
     iconProps: {
       iconName: 'Add'
     },
@@ -35,6 +35,7 @@ const items = [
         {
           key: 'carta',
           name: 'Carta',
+          onClick: ()=>{alert("tocado")},
           iconProps: {
             iconName: 'EatDrink'
           }

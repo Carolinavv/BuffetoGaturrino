@@ -30,7 +30,7 @@ namespace Listas
                 ctx.Load(web);
                 ctx.ExecuteQuery();
 
-                CrearLista creacion = new CrearLista("Categoría", "categoria", "Almacena los datos de las categorías en los que agrupan los platos.", (int)ListTemplateType.GenericList, ctx);
+                CrearLista creacion = new CrearLista("Categoria", "categoria", "Almacena los datos de las categorías en los que agrupan los platos.", (int)ListTemplateType.GenericList, ctx);
                 creacion.Crear();
                 creacion.CambiarDisplay();
                 List listaCategoria = creacion.Ref;
@@ -68,6 +68,33 @@ namespace Listas
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 int cntF = 0;
 
+
+                //Categoría Guarnicion
+                Console.WriteLine("  Definiendo Campos de: {0} ", "Categoría");
+                listaCategoria.Fields.AddFieldAsXml("<Field ID='{F266F118-3B06-48EE-9DF4-3E3FD0CC94CA}' "
+                                                     + " DisplayName='catGuarnicion' "
+                                                     + " Name='catGuarnicion' "
+                                                     + " Type ='LookupMulti' "
+                                                     + " List='{" + listaGuarnicion.Id + "}' "
+                                                     + " ShowField='Title' "
+                                                     + " Mult='TRUE' />", true, AddFieldOptions.DefaultValue);
+                Console.WriteLine("    -{0} ", "Guarnicion");
+                try
+                {
+                    ctx.ExecuteQuery();
+                }
+                catch (Exception ex)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("    - EXISTENTE");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                Field Campo = listaCategoria.Fields.GetByInternalNameOrTitle("catGuarnicion");
+                Campo.Title = "Guarnición";
+                Campo.Update();
+                cntF++;
+                ctx.ExecuteQuery();
+
                 //Ingredientes Disponibilidad --------------------------------------------------------------------------------------------
                 Console.WriteLine("  Definiendo Campos de: {0} ", "Ingredientes");
                 listaIngredientes.Fields.AddFieldAsXml("<Field ID='{5BF90F4C-E9DA-47AB-8863-19B7B27DBC95}' "
@@ -89,7 +116,7 @@ namespace Listas
                     Console.WriteLine("    - EXISTENTE");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                Field Campo = listaIngredientes.Fields.GetByInternalNameOrTitle("ingDisponibilidad");
+                Campo = listaIngredientes.Fields.GetByInternalNameOrTitle("ingDisponibilidad");
                 Campo.Title = "Disponibilidad";
                 Campo.Update();
                 cntF++;
@@ -131,7 +158,6 @@ namespace Listas
                                                      + " List='{" + listaCategoria.Id + "}' "
                                                      + " ShowField='Title' "
                                                      + " Indexed='TRUE' "
-                                                     + " EnforceUniqueValues='TRUE' "
                                                      + " Required='TRUE' />", true, AddFieldOptions.DefaultValue);
                 Console.WriteLine("    -{0} ", "Categoria");
                 //Carta Disponibilidad
@@ -179,15 +205,6 @@ namespace Listas
                                                           + "</FieldRefs>"
                                                           + " </Field>", true, AddFieldOptions.DefaultValue);
                 Console.WriteLine("    -{0} ", "Total");
-            ////Carta Guarnicion
-                listaCarta.Fields.AddFieldAsXml("<Field ID='{F266F118-3B06-48EE-9DF4-3E3FD0CC94CA}' "
-                                                     + " DisplayName='carGuarnicion' "
-                                                     + " Name='carGuarnicion' "
-                                                     + " Type ='LookupMulti' "
-                                                     + " List='{" + listaGuarnicion.Id + "}' "
-                                                     + " ShowField='Title' "
-                                                     + " Mult='TRUE' />", true, AddFieldOptions.DefaultValue);
-                Console.WriteLine("    -{0} ", "Guarnicion");
                 listaCarta.Update();
                 try
                 {
@@ -199,7 +216,7 @@ namespace Listas
                     Console.WriteLine("    -EXISTENTE");
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                Field[] CamposCarta = new Field[6];
+                Field[] CamposCarta = new Field[5];
                 CamposCarta[0] = listaCarta.Fields.GetByInternalNameOrTitle("carCategoria");
                 CamposCarta[0].Title = "Categoría";
                 CamposCarta[1] = listaCarta.Fields.GetByInternalNameOrTitle("carDisponibilidad");
@@ -210,8 +227,6 @@ namespace Listas
                 CamposCarta[3].Title = "Descuento";
                 CamposCarta[4] = listaCarta.Fields.GetByInternalNameOrTitle("carTotal");
                 CamposCarta[4].Title = "Total";
-                CamposCarta[5] = listaCarta.Fields.GetByInternalNameOrTitle("carGuarnicion");
-                CamposCarta[5].Title = "Guarnición";
                 foreach (Field c in CamposCarta)
                 {
                     c.Update();
