@@ -1,16 +1,27 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .generarPedido {
+
   .container {
-    max-width: 700px;
+    max-width: 1200px;
     margin: 0px auto;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    background-color: #4286f4;
+    color: white;
+    padding: 1em;
+  }
+
+  .headertitle {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-align: center;
   }
 
   .row {
     @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
+    color: black;
     padding: 20px;
   }
 
@@ -22,21 +33,6 @@
     @include ms-lgPush1;
   }
 
-  .title {
-    @include ms-font-xl;
-    @include ms-fontColor-white;
-  }
-
-  .subTitle {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
-  .description {
-    @include ms-font-l;
-    @include ms-fontColor-white;
-  }
-
   .button {
     // Our button
     text-decoration: none;
@@ -46,7 +42,6 @@
     min-width: 80px;
     background-color: $ms-color-themePrimary;
     border-color: $ms-color-themePrimary;
-    color: $ms-color-white;
 
     // Basic Button
     outline: transparent;
