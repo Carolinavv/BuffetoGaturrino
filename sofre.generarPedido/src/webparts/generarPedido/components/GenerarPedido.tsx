@@ -100,36 +100,7 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
         onClick: () => console.log('Download')
       }
     ];
-  };
-
-  private getOverlflowItems = () => {
-    return [
-      {
-        key: 'move',
-        name: 'Move to...',
-        onClick: () => console.log('Move to'),
-        iconProps: {
-          iconName: 'MoveToFolder'
-        }
-      },
-      {
-        key: 'copy',
-        name: 'Copy to...',
-        onClick: () => console.log('Copy to'),
-        iconProps: {
-          iconName: 'Copy'
-        }
-      },
-      {
-        key: 'rename',
-        name: 'Rename...',
-        onClick: () => console.log('Rename'),
-        iconProps: {
-          iconName: 'Edit'
-        }
-      }
-    ];
-  };
+  }
 
   private getFarItems = () => {
     return [
@@ -163,24 +134,61 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
         onClick: () => console.log('Info')
       }
     ];
-  };
+  }
 
 }
 
 function _buildColumns(): IColumn[] {
-  const _item = createListItems(1);
-  const columns: IColumn[] = buildColumns(_item);
 
-  for (const column of columns) {
-    if (column.key === 'thumbnail') {
-      column.name = 'FileType';
-      column.minWidth = 16;
-      column.maxWidth = 16;
-      column.isIconOnly = true;
-      column.iconName = 'Page';
-      break;
+  let columnas:IColumn[] = [
+    {
+      key: 'tipoDePlato',
+      name: 'Tipo',
+      fieldName: 'tipoDePlato',
+      minWidth: 16,
+      maxWidth: 16,
+      onRender: () => {
+        return this.state.items["tipoDePlato"];
+      }
+    },
+    {
+      key: 'nombreDePlato',
+      name: 'Nombre',
+      fieldName: 'nombreDePlato',
+      minWidth: 16,
+      maxWidth: 16,
+      onRender: () => {
+        return this.state.items["nombreDePlato"];
+      }
+    },
+    {
+      key: 'guarnicion',
+      name: 'Guarnicion',
+      fieldName: 'guarnicion',
+      minWidth: 16,
+      maxWidth: 16,
+      onRender: () => {
+        if(this.state.items["guarnicion"]) {
+         return this.state.items["nombre"];
+        } else return "No";
+      }
+    }, {
+      key: 'ingredientes',
+      name: 'Ingredientes',
+      fieldName: 'ingredientes',
+      minWidth: 16,
+      maxWidth: 16,
+      onRender: () => {
+        if (this.state.items["ingredientes"]) {
+          let ingredientes: string;
+          this.state.items["ingredientes"].forEach(ingrediente => {
+            ingredientes += ingrediente+' ';
+          });
+          return ingredientes;
+        } else return "No";
+      }
     }
-  }
+  ];
 
-  return columns;
+  return columnas;
 }
