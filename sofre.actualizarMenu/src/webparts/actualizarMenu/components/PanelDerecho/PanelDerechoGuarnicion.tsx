@@ -10,7 +10,7 @@ export interface IPanelProps{
     newItem: boolean;
 }
 
-export default class PanelDerechoCarta extends React.Component<IPanelProps, IPanelStates> {
+export default class PanelDerechoGuarnicion extends React.Component<IPanelProps, IPanelStates> {
     public state = {
         showPanel: false
     }
@@ -59,4 +59,4 @@ export default class PanelDerechoCarta extends React.Component<IPanelProps, IPan
     //         <div></div>
     //     )
     }
-}
+

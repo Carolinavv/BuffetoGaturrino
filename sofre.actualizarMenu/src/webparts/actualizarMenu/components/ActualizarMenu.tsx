@@ -6,8 +6,7 @@ import ListaMenu from './ListaMenu/ListaMenu';
 import './Header/HeaderMenu';
 import HeaderMenu from './Header/HeaderMenu';
 import BarraComando from './BarraComandos/BarraComando';
-import FormularioNuevaCarta from './FormularioNuevaCarta/FormularioNuevaCarta';
-import FormularioNuevoGI from './FormularioNuevoGI/FormularioNuevoGI';
+import PanelDerechoCarta from './PanelDerecho/PanelDerechoCarta';
 
 
 export default class ActualizarMenu extends React.Component<IActualizarMenuProps, {}> {
@@ -22,8 +21,7 @@ export default class ActualizarMenu extends React.Component<IActualizarMenuProps
              <br />
              <br />
              <br />
-             <FormularioNuevaCarta />
-             <FormularioNuevoGI titulo="Un título" />
+            <PanelDerechoCarta />
             </div>
         </div> 
       </div>
