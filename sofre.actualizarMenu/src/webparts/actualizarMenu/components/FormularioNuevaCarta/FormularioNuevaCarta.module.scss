@@ -1,27 +1,13 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
-.container{
-    max-width: 700px;
-    margin: 0px auto;
-    background-color: cornflowerblue;
+.formularioCarta{
+    background-color: rgb(92, 223, 205);
 }
-
-.row {
-    @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
-    padding: 20px;
-  }
-
-  .column6 {
-    @include ms-Grid-col;
-    @include ms-lg10;
-    @include ms-xl8;
-    @include ms-xlPush2;
-    @include ms-lgPush1;
-  }
-
 
 .ancho200{
     width: 200px;
+}
+
+h3{
+    text-align: center;
 }
