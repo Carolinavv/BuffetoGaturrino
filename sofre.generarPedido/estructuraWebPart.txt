@@ -1,4 +1,4 @@
-        <headerDelPEDIDO General>LOGIN USER--- DETALLE DEL PEDIDO ( HORARIO, numero de pedido, etc) </headerDelPEDIDO>
+        <headerDelPEDIDO General>LOGI N USER--- DETALLE DEL PEDIDO ( HORARIO, numero de pedido, etc) </headerDelPEDIDO>
         
         <CUERPO DEL PEDIDO General>
          

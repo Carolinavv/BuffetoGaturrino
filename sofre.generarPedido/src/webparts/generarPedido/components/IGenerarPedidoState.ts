@@ -7,4 +7,5 @@ export interface IGenerarPedidoState {
     opcion: string;
     mostrarPedido: Boolean;
     loadingScreen: Boolean;
+    showPanel: boolean;
 }
