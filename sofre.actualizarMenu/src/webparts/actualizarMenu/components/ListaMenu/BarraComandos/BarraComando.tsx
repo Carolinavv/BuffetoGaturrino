@@ -7,15 +7,18 @@ import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import style from './BarraComando.module.scss';
 
-export default class BarraComando extends React.Component<{}, {}> {
-  public render(): JSX.Element {
 
+interface IBarraComandosProps{
+  onNewItem: Function;
+}
+
+export default class BarraComandos extends React.Component<IBarraComandosProps, {}> {
+  public render(): JSX.Element {
     return (
         <CommandBar
           items={items}
           farItems={farItems}
           className={style.commandbar}
-
         />
     );
   }
@@ -35,7 +38,7 @@ const items = [
         {
           key: 'carta',
           name: 'Carta',
-          onClick: ()=>{alert("tocado")},
+          onClick: this.props.onNewItem,
           iconProps: {
             iconName: 'EatDrink'
           }

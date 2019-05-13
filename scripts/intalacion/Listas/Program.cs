@@ -13,10 +13,6 @@ namespace Listas
     {
         static void Main(string[] args)
         {
-
-            //string usrInPass = "Canada7/";
-            //string usrUser = "usuario1@vtrtesting.onmicrosoft.com";
-
             string usrUser   = Properties.Settings.Default.User;
             string usrInPass = Properties.Settings.Default.Pass;
             string usrURL    = Properties.Settings.Default.URL;
@@ -40,7 +36,7 @@ namespace Listas
                 creacion.CambiarDisplay();
                 List listaIngredientes = creacion.Ref;
 
-                creacion = new CrearLista("Guarnición", "guarnicion", "Almacena los datos de las guarniciones que acompañan los platos.", (int)ListTemplateType.GenericList, ctx);
+                creacion = new CrearLista("Guarnicion", "guarnicion", "Almacena los datos de las guarniciones que acompañan los platos.", (int)ListTemplateType.GenericList, ctx);
                 creacion.Crear();
                 creacion.CambiarDisplay();
                 List listaGuarnicion = creacion.Ref;
@@ -308,7 +304,7 @@ namespace Listas
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
                 Field[] CamposPedido = new Field[8];
-                CamposPedido[0] = listaPedido.Fields.GetByInternalNameOrTitle("pedObsevaciones");
+                CamposPedido[0] = listaPedido.Fields.GetByInternalNameOrTitle("pedObservaciones");
                 CamposPedido[0].Title = "Observaciones";
                 CamposPedido[1] = listaPedido.Fields.GetByInternalNameOrTitle("pedEstado");
                 CamposPedido[1].Title = "Estado";
@@ -525,7 +521,7 @@ namespace Listas
             }
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("\n ###### FIN ###### ");
-       Console.WriteLine("\n                       .-o=o-.");
+       Console.WriteLine("\n         .-o=o-.");
        Console.WriteLine("       ,  /=o=o=o=\\ .--.");
        Console.WriteLine("      _|\\|=o=O=o=O=|    \\");
        Console.WriteLine("  __.'  a`\\=o=o=o=(`\\   /");
@@ -533,7 +529,7 @@ namespace Listas
        Console.WriteLine("    \\   .'  /   .--'  |_.'   / .-._)");
        Console.WriteLine("     `)  _.'   /     /`-.__.' /");
        Console.WriteLine("     `'-.____;     /'-.___.-'");
-       Console.WriteLine("               `\"\"\"`')");
+       Console.WriteLine("             `\"\"\"`')");
             Console.BackgroundColor = ConsoleColor.Green;
             Console.ReadKey();
         }
