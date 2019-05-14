@@ -7,6 +7,7 @@ import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 
 import { TextField, MaskedTextField } from 'office-ui-fabric-react/lib/TextField';
 import "@pnp/polyfill-ie11";
 import { sp } from '@pnp/sp';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { render } from 'react-dom';
 import { inputProperties } from '@uifabric/utilities/lib';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
@@ -168,8 +169,14 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
               </div>
             </div>
           }
-
         </Panel>
+        <br/>
+        <div>
+          <CommandBar
+            items={this.getItems()}
+            farItems={this.getFarItems()}
+          />
+        </div>
       </div>
     );
   }
@@ -274,5 +281,68 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
       this.setState({ listCarta: cartaDropdown });
     });
   }
+
+    private getItems = () => {
+    return [
+      {
+        key: 'newItem',
+        name: 'Nuevo',
+        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+        iconProps: {
+          iconName: 'Add'
+        }
+      },
+      {
+        key: 'editItem',
+        name: 'Editar',
+        iconProps: {
+          iconName: 'Edit'
+        }
+      },
+      {
+        key: 'deleteItem',
+        name: 'Borrar',
+        iconProps: {
+          iconName: 'Delete'
+        },
+        onClick: () => console.log('Share')
+      }
+    ];
+  }
+
+  private getFarItems = () => {
+    return [
+      {
+        key: 'sortItems',
+        name: 'Ordenar',
+        ariaLabel: 'Sort',
+        iconProps: {
+          iconName: 'SortLines'
+        },
+        onClick: () => console.log('Sort')
+      },
+      {
+        key: 'tile',
+        name: 'Grid view',
+        ariaLabel: 'Grid view',
+        iconProps: {
+          iconName: 'Tiles'
+        },
+        iconOnly: true,
+        onClick: () => console.log('Tiles')
+      },
+      {
+        key: 'info',
+        name: 'Info',
+        ariaLabel: 'Info',
+        iconProps: {
+          iconName: 'Info'
+        },
+        iconOnly: true,
+        onClick: () => console.log('Info')
+      }
+    ];
+  }
+
 
 }
