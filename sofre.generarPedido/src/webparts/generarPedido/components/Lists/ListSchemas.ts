@@ -4,6 +4,13 @@ export interface ListPedDetalle {
     guarnicion?: string;
     aderezos: string[];
     cubiertos: boolean;
+    cantidad: number;
+    observaciones: string;
+    subtotal: number;
+    total: number;
+    idpedido: number;
+    idguarnicion: number;
+    idcarta: number;
     pan: boolean;
     usuario: string;
     ingredientes?: string[];
@@ -19,7 +26,8 @@ export interface ListCarta {
     ID: number;
     Titulo: string;
     Categoria: string;
+    Guarnicion: string;
     Disponibilidad: boolean;
     Precio: number;
-    Descuento: number
+    Descuento: number;
 }

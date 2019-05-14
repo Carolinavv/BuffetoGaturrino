@@ -1,4 +1,4 @@
-import { CARTA, GUARNICION, INGREDIENTES } from "../../../structure/SPListas";
+import { CARTA, GUARNICION, INGREDIENTES, PEDIDODETALLE } from "../../../structure/SPListas";
 import { ListCategoria, ListPedDetalle, ListCarta } from "../ListSchemas";
 import "@pnp/polyfill-ie11";
 import { sp } from "@pnp/sp";
@@ -20,6 +20,7 @@ export class importListaCarta {
             importListaCarta.listaCarta.Fields.Titulo,
             importListaCarta.listaCarta.Fields.Categoria.Lookup + '/' +
             importListaCarta.listaCarta.Fields.Categoria.Fields[0].Title,
+            importListaCarta.listaCarta.Fields.Categoria.Fields[0].Guarnicion,
             importListaCarta.listaCarta.Fields.Disponibilidad,
             importListaCarta.listaCarta.Fields.Precio,
             importListaCarta.listaCarta.Fields.Descuento)
@@ -32,6 +33,7 @@ export class importListaCarta {
                         ID: item.Id,
                         Titulo: item.Title,
                         Categoria: item.carCategoria.Title,
+                        Guarnicion: item.carCategoria.catGuarnicion,
                         Disponibilidad: item.carDisponibilidad,
                         Precio: item.carPrecio,
                         Descuento: item.carDescuento
@@ -42,4 +44,30 @@ export class importListaCarta {
         console.log(this.Items.length + ' Items cargados.');
     }
 
+}
+
+export class exportListaPedidoDetalle {
+
+    private _PedidoList: ListPedDetalle;
+    public static listaPedidoDetalle = PEDIDODETALLE;
+
+    constructor(item: ListPedDetalle) {
+        this._PedidoList = item;
+    }
+
+    
+
+}
+
+export async function getID(item: string, list: string){
+
+    try {
+        return await sp.web.lists.getByTitle(list).items.select('Id').filter('Title eq' + `'${item}'`).top(1).get().then((data:any) => {
+            return data.Id;
+        });
+    }
+    catch (e) {
+        console.log('No existe el item, ' + e);
+        return null;
+    }
 }

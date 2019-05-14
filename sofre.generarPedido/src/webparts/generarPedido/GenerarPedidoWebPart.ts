@@ -10,12 +10,22 @@ import {
 import * as strings from 'GenerarPedidoWebPartStrings';
 import GenerarPedido from './components/GenerarPedido';
 import { IGenerarPedidoProps } from './components/IGenerarPedidoProps';
+import '@pnp/polyfill-ie11';
+import { sp } from "@pnp/sp";
 
 export interface IGenerarPedidoWebPartProps {
   description: string;
 }
 
 export default class GenerarPedidoWebPart extends BaseClientSideWebPart<IGenerarPedidoWebPartProps> {
+
+  public onInit(): Promise<void> {
+    return super.onInit().then(_ => {
+      sp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IGenerarPedidoProps > = React.createElement(

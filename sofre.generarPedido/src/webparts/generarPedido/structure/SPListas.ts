@@ -7,11 +7,12 @@ export const CARTA = {
         Titulo: 'Title',
         Categoria: {
             Lookup: 'carCategoria',
-            Fields: [{ Title: 'Title' }]
+            Fields: [{ Title: 'Title', Guarnicion: 'Guarnicion' }]
         },
         Disponibilidad: 'carDisponibilidad',
         Precio: 'carPrecio',
-        Descuento: 'carDescuento'
+        Descuento: 'carDescuento',
+        Total: 'carTotal'
     }
 };
 
@@ -42,19 +43,61 @@ export const PEDIDODETALLE = {
         Title: 'pedidoDetalle'
     },
     Fields: {
-        Id: 'Id',
+        Id: 'ID',
         Titulo: 'Title',
         Guarnicion: {
-            Lookup: 'pedGuarnicion',
+            Lookup: 'peddtGuarnicion',
             Fields: [
                 {Title: 'Title'}
             ]
         },
         Ingredientes: {
-            Lookup: 'pedIngredientes',
+            Lookup: 'peddtIngredientes',
             Fields: [
                 { Title: 'Title' }
             ]
         },
+        Aderezos: 'peddtAderezos',
+        Cubiertos: 'peddtCubiertos',
+        Pan: 'peddtPan',
+        Cantidad: 'peddtCantidad',
+        Observaciones: 'peddtObservaciones',
+        Usuario: 'peddtUsuario',
+        Subtotal: 'peddtSubTotal',
+        Total: 'peddtTotal',
+        IDPedido: {
+            Lookup: 'peddtIDPedido',
+            Fields: [
+                { Id: 'ID' }
+            ]
+        },
+        IDGuarnicion: {
+            Lookup: 'peddtIDGuarnicion',
+            Fields: [
+                { Id: 'ID' }
+            ]
+        },
+        IDCarta: {
+            Lookup: 'peddtIDCarta',
+            Fields: [
+                { Id: 'ID' }
+            ]
+        },
+        TituloGuarnicion: 'peddtTituloGuarnicion',
+        Categoria: 'peddtCategoria',
+        Bonificaciones: 'peddtBonificaciones'
     }
+};
+
+export const PEDIDOS = {
+    Id: 'ID',
+    Titulo: 'Title',
+    Observaciones: 'pedObservaciones',
+    Estado: 'pedEstado',
+    Ubicacion: 'pedUbicacion',
+    Subtotal: 'pedSubTotal',
+    HistorialPedido: 'pedHistorialEstado',
+    Horario: 'pedHorario',
+    Bonificaciones: 'pedBonificaciones',
+    Total: 'pedTotal'
 };
