@@ -1,0 +1,19 @@
+        <headerDelPEDIDO General>LOGI N USER--- DETALLE DEL PEDIDO ( HORARIO, numero de pedido, etc) </headerDelPEDIDO>
+        
+        <CUERPO DEL PEDIDO General>
+         
+         TODOS LOS PEDIDOS
+         
+          FOR(){
+         
+          <headDeUnPedido Particular>
+            NOMBRE DEL DUEÑO DEL PLATO, otros datos del detalle pedido
+          </headDeUnPedido Particular>
+
+          <UnPedido Particular>
+            Cuerpo del pedido
+          </unPedido Particular>
+
+          }
+
+        </CUERPO DEL PEDIDO General>
