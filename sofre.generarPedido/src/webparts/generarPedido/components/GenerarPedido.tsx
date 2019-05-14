@@ -49,11 +49,7 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
           <p>Fecha: 22/11/2019</p>
         </div>
         <hr/>
-        <div>
-          <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Nuevo pedido" />
-          <DefaultButton className={styles.button} text="Enviar Pedido"/>
-        </div>
-        <Panel isOpen={this.state.showPanel} onDismiss={this._hidePanel} type={PanelType.large} headerText="Large Panel">
+        <Panel isOpen={this.state.showPanel} onDismiss={this._hidePanel} type={PanelType.medium} headerText="Ingrese su pedido">
           <div >
             <div className={styles.container}>
               <div className={styles.row}>
@@ -75,13 +71,6 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
                   />
                 </div>
               </div>
-              {/* {this.state.loadingScreen &&
-                <PantallaCarga />
-              }
-              {this.state.mostrarPedido &&
-                <FormPedido opcion={this.state.opcion}></FormPedido>
-              } */}
-
 
             </div>
           </div>
@@ -170,7 +159,6 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
             </div>
           }
         </Panel>
-        <br/>
         <div>
           <CommandBar
             items={this.getItems()}
@@ -290,7 +278,8 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
         cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
         iconProps: {
           iconName: 'Add'
-        }
+        },
+        onClick: () => this.setState({ showPanel: true })
       },
       {
         key: 'editItem',
