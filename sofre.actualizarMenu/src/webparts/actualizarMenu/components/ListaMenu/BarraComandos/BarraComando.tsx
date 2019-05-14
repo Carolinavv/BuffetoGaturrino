@@ -7,19 +7,27 @@ import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import style from './BarraComando.module.scss';
 
+<<<<<<< HEAD:sofre.actualizarMenu/src/webparts/actualizarMenu/components/BarraComandos/BarraComando.tsx
 
 
 
 
 export default class BarraComando extends React.Component<{}, {}> {
   public render(): JSX.Element {
+=======
+>>>>>>> ActMenu_Gm:sofre.actualizarMenu/src/webparts/actualizarMenu/components/ListaMenu/BarraComandos/BarraComando.tsx
 
+interface IBarraComandosProps{
+  onNewItem: Function;
+}
+
+export default class BarraComandos extends React.Component<IBarraComandosProps, {}> {
+  public render(): JSX.Element {
     return (
         <CommandBar
           items={items}
           farItems={farItems}
           className={style.commandbar}
-
         />
     );
   }
@@ -39,6 +47,10 @@ const items = [
         {
           key: 'carta',
           name: 'Carta',
+<<<<<<< HEAD:sofre.actualizarMenu/src/webparts/actualizarMenu/components/BarraComandos/BarraComando.tsx
+=======
+          onClick: this.props.onNewItem,
+>>>>>>> ActMenu_Gm:sofre.actualizarMenu/src/webparts/actualizarMenu/components/ListaMenu/BarraComandos/BarraComando.tsx
           iconProps: {
             iconName: 'EatDrink'
           }

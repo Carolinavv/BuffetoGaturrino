@@ -45,4 +45,18 @@ export class ListaCarta{
         this.ItemsCount = this.Items.length;
         console.log(this.Items.length + ' Items cargados.');
   }
+
+  public addItem(title:string, categoria:string, disponibilidad:boolean, precio:number){
+    sp.web
+    .lists
+      .getByTitle(ListaCarta.Strings.Props.Title)
+        .items
+        .add({
+          Titulo:         title,
+          Categoria:      categoria,
+          Disponibilidad: disponibilidad,
+          Precio:         precio        
+        })
+        .then(r=>{console.log(r)})
+  }
 }
