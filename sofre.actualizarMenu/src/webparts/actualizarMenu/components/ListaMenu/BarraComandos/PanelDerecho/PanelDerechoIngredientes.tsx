@@ -31,9 +31,6 @@ export default class PanelDerechoGuarnicion extends React.Component<IPanelProps,
                 onRenderFooterContent={this._onRenderFooterContent}
             >
 
-            {/* TU CONTENIDO ACÁ */}
-
-
             <Label htmlFor={textFieldIdNombre}>Nombre:</Label>
             <TextField  id={textFieldIdNombre} />
             <Toggle 
@@ -46,7 +43,6 @@ export default class PanelDerechoGuarnicion extends React.Component<IPanelProps,
                 onFocus={() => console.log('onFocus called')}
                 onBlur={() => console.log('onBlur called')}
             />
-            {/* TU CONTENIDO ACÁ */}
             </Panel>
 
         );
@@ -68,8 +64,8 @@ export default class PanelDerechoGuarnicion extends React.Component<IPanelProps,
     };
 
     private _hidePanel = () => {
-    this.props.onClose();
-    this.setState({ showPanel: false });
+      this.props.onClose();
+      this.setState({ showPanel: false });
 
     };
 

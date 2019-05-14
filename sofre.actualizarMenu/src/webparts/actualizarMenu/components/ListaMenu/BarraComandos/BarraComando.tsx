@@ -7,36 +7,42 @@ import PanelDerechoCarta from './PanelDerecho/PanelDerechoCarta'
 import PanelDerechoCategorias from './PanelDerecho/PanelDerechoCategorias';
 import PanelDerechoGuarnicion from './PanelDerecho/PanelDerechoGuarnicion';
 import PanelDerechoIngredientes from './PanelDerecho/PanelDerechoIngredientes';
+import { PanelFlags } from './PanelFlags';
 
 export interface IBarraComandosProps {
   onNewItem: Function;
 }
 export interface IBarraComandosStates {
-  showNewItemCartaPanel: boolean;
-  showNewItemGuarnicionPanel: boolean;
-  showNewItemIngredientesPanel: boolean;
-  showNewItemCategoriasPanel: boolean;
+  CartaPanel:        PanelFlags;
+  GuarnicionPanel:   PanelFlags;
+  IngredientesPanel: PanelFlags;
+  CategoriasPanel:   PanelFlags;
 }
 
 export default class BarraComandos extends React.Component<IBarraComandosProps, IBarraComandosStates> {
   constructor(props){
     super(props);
     this.state = { 
-      showNewItemCartaPanel: false,
-      showNewItemGuarnicionPanel: false,
-      showNewItemIngredientesPanel: false,
-      showNewItemCategoriasPanel: false
+      CartaPanel:        {open: false, new: true},
+      GuarnicionPanel:   {open: false, new: true},
+      IngredientesPanel: {open: false, new: true},
+      CategoriasPanel:   {open: false, new: true}
      }
+
+     this.closePanelCarta         = this.closePanelCarta.bind(this);
+     this.closePanelCategorias    = this.closePanelCategorias.bind(this);
+     this.closePanelGuarnicion    = this.closePanelGuarnicion.bind(this);
+     this.closePanelIngredientes  = this.closePanelIngredientes.bind(this);
   }
   
   public render(): JSX.Element {
     return (
       <div>
 
-      {this.state.showNewItemCartaPanel && <PanelDerechoCarta onClose={this.closePanelCarta} />}
-      {this.state.showNewItemGuarnicionPanel && <PanelDerechoGuarnicion onClose={this.closePanelGuarnicion} />}
-      {this.state.showNewItemIngredientesPanel && <PanelDerechoIngredientes onClose={this.closePanelIngredientes} />}
-      {this.state.showNewItemCategoriasPanel && <PanelDerechoCategorias onClose={this.closePanelCategorias} />}
+      {this.state.CartaPanel.open         && <PanelDerechoCarta         onClose={this.closePanelCarta}        />}
+      {this.state.GuarnicionPanel.open    && <PanelDerechoGuarnicion    onClose={this.closePanelGuarnicion}   />}
+      {this.state.IngredientesPanel.open  && <PanelDerechoIngredientes  onClose={this.closePanelIngredientes} />}
+      {this.state.CategoriasPanel.open    && <PanelDerechoCategorias    onClose={this.closePanelCategorias}   />}
       
 
         <CommandBar
@@ -69,8 +75,8 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
             }
           },
           {
-            key: 'ingrediente',
-            name: 'Ingrediente',
+            key: 'ingredientes',
+            name: 'Ingredientes',
             onClick: ()=> this.newItemIngredientes(),
             iconProps: {
               iconName: 'Brunch'
@@ -78,10 +84,18 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
           },
           {
             key: 'guarnicion',
-            name: 'Guarnicion',
+            name: 'Guarnición',
             onClick: ()=> this.newItemGuarnicion(),
             iconProps: {
               iconName: 'Breakfast'
+            }
+          },
+          {
+            key: 'categorias',
+            name: 'Categorías',
+            onClick: ()=> this.newItemCategorias(),
+            iconProps: {
+              iconName: 'Tag'
             }
           }
         ]
@@ -113,54 +127,50 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
 
   private newItemCarta() {
     this.setState({
-      showNewItemCartaPanel: true
+      CartaPanel: {open: true, new: true}
     });
   }
 
-  private closePanelCarta(){
+  public closePanelCarta(){
     this.setState({
-      showNewItemCartaPanel: false
+      CartaPanel: {open: false, new: true}
     });
   }
 
   private newItemGuarnicion() {
     this.setState({
-      showNewItemGuarnicionPanel: true
+      GuarnicionPanel: {open: true, new: true}
     });
   }
 
-  private closePanelGuarnicion(){
+  public closePanelGuarnicion(){
     this.setState({
-      showNewItemGuarnicionPanel: false
+      GuarnicionPanel: {open: false, new: true}
     });
   }
 
   private newItemCategorias() {
     this.setState({
-      showNewItemCategoriasPanel: true
+      CategoriasPanel: {open: true, new: true}
     });
   }
 
-  private closePanelCategorias(){
+  public closePanelCategorias(){
     this.setState({
-      showNewItemCategoriasPanel: false
+      CategoriasPanel: {open: false, new: true}
     });
   }
 
   private newItemIngredientes() {
     this.setState({
-      showNewItemIngredientesPanel: true
+      IngredientesPanel: {open: true, new: true}
     });
   }
 
-  private closePanelIngredientes(){
+  public closePanelIngredientes(){
     this.setState({
-      showNewItemIngredientesPanel: false
+      IngredientesPanel: {open: false, new: true}
     });
   }
 
 }
-
-
-
-

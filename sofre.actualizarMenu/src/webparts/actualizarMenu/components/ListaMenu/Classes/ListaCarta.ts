@@ -1,5 +1,5 @@
 import { CARTA } from '../../../Structure/SListas';
-import IListaMenuItem from '../IListaMenuItem';
+import IListaMenuItem from '../IListasItem/IListaMenuItem';
 import '@pnp/polyfill-ie11';
 import { sp } from '@pnp/sp';
 

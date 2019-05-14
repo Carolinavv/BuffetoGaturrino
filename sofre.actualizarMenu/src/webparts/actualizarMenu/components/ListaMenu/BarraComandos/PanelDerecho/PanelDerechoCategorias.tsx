@@ -26,13 +26,10 @@ export default class PanelDerechoCategorias extends React.Component<IPanelProps,
                 isOpen={this.state.showPanel}
                 type={PanelType.smallFixedFar}
                 onDismiss={this._hidePanel}
-                headerText=""
+                headerText="Categorias"
                 onRenderFooterContent={this._onRenderFooterContent}
             >
 
-            {/* TU CONTENIDO ACÁ */}
-
-            <h3>Categorías</h3>
             <Label htmlFor={textFieldIdNombre}>Nombre:</Label>
             <TextField  id={textFieldIdNombre} />
             <Dropdown 
@@ -48,8 +45,6 @@ export default class PanelDerechoCategorias extends React.Component<IPanelProps,
                       ]
                      }
             />
-
-            {/* TU CONTENIDO ACÁ */}
             </Panel>
 
         );

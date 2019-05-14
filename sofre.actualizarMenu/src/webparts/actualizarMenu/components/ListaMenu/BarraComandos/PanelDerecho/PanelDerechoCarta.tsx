@@ -28,13 +28,10 @@ export default class PanelDerechoCarta extends React.Component<IPanelProps, IPan
                 isOpen={this.state.showPanel}
                 type={PanelType.smallFixedFar}
                 onDismiss={this._hidePanel}
-                headerText=""
+                headerText="Carta"
                 onRenderFooterContent={this._onRenderFooterContent}
             >
 
-            {/* TU CONTENIDO ACÁ */}
-
-            <h3>Carta</h3>
             <Label htmlFor={textFieldIdNombre}>Nombre:</Label>
             <TextField id={textFieldIdNombre} />
 
@@ -78,7 +75,6 @@ export default class PanelDerechoCarta extends React.Component<IPanelProps, IPan
                        ]
                       }
             />
-            {/* TU CONTENIDO ACÁ */}
             </Panel>
 
         );
