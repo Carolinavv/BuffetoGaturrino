@@ -6,9 +6,9 @@ import ListaMenu from './ListaMenu/ListaMenu';
 import './Header/HeaderMenu';
 import HeaderMenu from './Header/HeaderMenu';
 import BarraComando from './BarraComandos/BarraComando';
-import FormularioNuevaCarta from './FormularioNuevaCarta/FormularioNuevaCarta';
 import FormularioNuevoGI from './FormularioNuevoGI/FormularioNuevoGI';
 import {DropDown} from './BarraComandos/DropDown';
+import PanelDerechoCarta from './PanelDerecho/PanelDerechoCarta';
 
 export default class ActualizarMenu extends React.Component<IActualizarMenuProps, {}> {
   public render(): React.ReactElement<IActualizarMenuProps> {
@@ -17,15 +17,9 @@ export default class ActualizarMenu extends React.Component<IActualizarMenuProps
         <div className={ styles.container }>
           <div className={ styles.row }>
             <HeaderMenu title={ this.props.title } />
-             <BarraComando />
              <DropDown/>
              <ListaMenu />
-             <br />
-             <br />
-             <br />
-             <FormularioNuevaCarta />
-             <FormularioNuevoGI titulo="Un título" />
-            </div>
+          </div>
         </div> 
       </div>
     );
