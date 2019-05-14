@@ -10,7 +10,9 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 export interface IPanelStates{
     showPanel: boolean;
 }
-
+export interface IPanelProps{
+  onClose: Function;
+}
 
 
 export default class PanelDerechoCarta extends React.Component<IPanelProps, IPanelStates> {
@@ -100,6 +102,7 @@ export default class PanelDerechoCarta extends React.Component<IPanelProps, IPan
     };
 
     private _hidePanel = () => {
+      this.props.onClose();
     this.setState({ showPanel: false });  
     };
 

@@ -9,9 +9,6 @@ export class ListaCarta{
   public Name: string;
   public Items: IListaMenuItem[];
   public ItemsCount: number;
-  // static get ItemsCount() {
-  //     return (async () => await this.up())();
-  // }
 
   public constructor(){
     this.Name = 'carta';

@@ -7,8 +7,8 @@ import './Header/HeaderMenu';
 import HeaderMenu from './Header/HeaderMenu';
 import BarraComando from './ListaMenu/BarraComandos/BarraComando';
 import FormularioNuevoGI from './FormularioNuevoGI/FormularioNuevoGI';
-import {DropDown} from './BarraComandos/DropDown';
-import PanelDerechoCarta from './PanelDerecho/PanelDerechoCarta';
+import {DropDown} from './ListaMenu/BarraComandos/DropDown';
+import PanelDerechoCarta from './ListaMenu/BarraComandos/PanelDerecho/PanelDerechoCarta';
 
 export default class ActualizarMenu extends React.Component<IActualizarMenuProps, {}> {
 

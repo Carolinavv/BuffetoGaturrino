@@ -4,11 +4,13 @@ import { IListaMenuStates } from './IListaMenuStates';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ListaCarta } from './Classes/ListaCarta';
 import BarraComandos from './BarraComandos/BarraComando';
+import { DropDown } from './BarraComandos/DropDown'
 
 export default class ListaMenu extends React.Component< any, IListaMenuStates>{
     private _columns : IColumn[];
     private _lstCarta: ListaCarta;
-    // const MyIcon = () => <Icon iconName="CompassNW" className="ms-IconExample" />;
+    // const IconOn = () => <Icon iconName="RadioBtnOn" />;
+    // const IconOff = () => <Icon iconName="RadioBtnOff" />;
         
     constructor(props){
         super(props);
@@ -31,6 +33,7 @@ export default class ListaMenu extends React.Component< any, IListaMenuStates>{
         return(
             <div>
                 <BarraComandos onNewItem={this.addItem}/>
+                <DropDown />
                 <DetailsList
                     items={this.state.items}
                     columns={this._columns}
