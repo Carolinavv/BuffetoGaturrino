@@ -1,21 +1,20 @@
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import * as React from 'react';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-
+import * as React from 'react';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
 export interface IPanelStates{
     showPanel: boolean;
 }
 
 export interface IPanelProps{
-    onClose: Function;
+  onClose: Function;
 }
 
-export default class PanelDerechoGuarnicion extends React.Component<IPanelProps, IPanelStates> {
+export default class PanelDerechoCategorias extends React.Component<IPanelProps, IPanelStates> {
     public state = {
         showPanel: true
     }
@@ -27,25 +26,29 @@ export default class PanelDerechoGuarnicion extends React.Component<IPanelProps,
                 isOpen={this.state.showPanel}
                 type={PanelType.smallFixedFar}
                 onDismiss={this._hidePanel}
-                headerText="Guarnición"
+                headerText=""
                 onRenderFooterContent={this._onRenderFooterContent}
             >
 
             {/* TU CONTENIDO ACÁ */}
 
-
+            <h3>Categorías</h3>
             <Label htmlFor={textFieldIdNombre}>Nombre:</Label>
             <TextField  id={textFieldIdNombre} />
-            <Toggle 
-                defaultChecked={true}
-                label='Disponibilidad'
-                onAriaLabel='This toggle is checked. Press to uncheck.'
-                offAriaLabel='This toggle is unchecked. Press to check.'
-                onText='On'
-                offText='Off'
-                onFocus={() => console.log('onFocus called')}
-                onBlur={() => console.log('onBlur called')}
+            <Dropdown 
+              placeHolder='Seleccione las opciones'
+              label='Guarnición:'
+              defaultSelectedKeys={['Guarnicion1', 'Guarnicion2', 'Guarnicion3']}
+              multiSelect
+              options={
+                      [
+                        { key: 'Prueba1', text: 'Guarnicion1' },
+                        { key: 'Prueba2', text: 'Guarnicion2' },
+                        { key: 'Prueba3', text: 'Guarnicion3' }
+                      ]
+                     }
             />
+
             {/* TU CONTENIDO ACÁ */}
             </Panel>
 
@@ -70,7 +73,6 @@ export default class PanelDerechoGuarnicion extends React.Component<IPanelProps,
     private _hidePanel = () => {
     this.props.onClose();
     this.setState({ showPanel: false });
-
     };
 
     // private _newItem(){

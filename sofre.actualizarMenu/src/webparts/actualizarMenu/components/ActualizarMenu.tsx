@@ -6,7 +6,6 @@ import ListaMenu from './ListaMenu/ListaMenu';
 import './Header/HeaderMenu';
 import HeaderMenu from './Header/HeaderMenu';
 import BarraComando from './ListaMenu/BarraComandos/BarraComando';
-import FormularioNuevoGI from './FormularioNuevoGI/FormularioNuevoGI';
 import {DropDown} from './ListaMenu/BarraComandos/DropDown';
 import PanelDerechoCarta from './ListaMenu/BarraComandos/PanelDerecho/PanelDerechoCarta';
 

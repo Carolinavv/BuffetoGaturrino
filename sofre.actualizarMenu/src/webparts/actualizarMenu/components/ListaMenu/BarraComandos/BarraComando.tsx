@@ -4,14 +4,18 @@ import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import style from './BarraComando.module.scss';
 import PanelDerechoCarta from './PanelDerecho/PanelDerechoCarta'
+import PanelDerechoCategorias from './PanelDerecho/PanelDerechoCategorias';
+import PanelDerechoGuarnicion from './PanelDerecho/PanelDerechoGuarnicion';
+import PanelDerechoIngredientes from './PanelDerecho/PanelDerechoIngredientes';
 
 export interface IBarraComandosProps {
   onNewItem: Function;
 }
 export interface IBarraComandosStates {
   showNewItemCartaPanel: boolean;
-  showNewItemIngredientePanel: boolean;
   showNewItemGuarnicionPanel: boolean;
+  showNewItemIngredientesPanel: boolean;
+  showNewItemCategoriasPanel: boolean;
 }
 
 export default class BarraComandos extends React.Component<IBarraComandosProps, IBarraComandosStates> {
@@ -19,8 +23,9 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
     super(props);
     this.state = { 
       showNewItemCartaPanel: false,
-      showNewItemIngredientePanel: false,
-      showNewItemGuarnicionPanel: false
+      showNewItemGuarnicionPanel: false,
+      showNewItemIngredientesPanel: false,
+      showNewItemCategoriasPanel: false
      }
   }
   
@@ -28,7 +33,11 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
     return (
       <div>
 
-        {this.state.showNewItemCartaPanel && <PanelDerechoCarta onClose={this.closePanel} />}
+      {this.state.showNewItemCartaPanel && <PanelDerechoCarta onClose={this.closePanelCarta} />}
+      {this.state.showNewItemGuarnicionPanel && <PanelDerechoGuarnicion onClose={this.closePanelGuarnicion} />}
+      {this.state.showNewItemIngredientesPanel && <PanelDerechoIngredientes onClose={this.closePanelIngredientes} />}
+      {this.state.showNewItemCategoriasPanel && <PanelDerechoCategorias onClose={this.closePanelCategorias} />}
+      
 
         <CommandBar
           items={this._items}
@@ -36,6 +45,7 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
           className={style.commandbar}
         />
       </div>
+      
     );
   }
 
@@ -61,6 +71,7 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
           {
             key: 'ingrediente',
             name: 'Ingrediente',
+            onClick: ()=> this.newItemIngredientes(),
             iconProps: {
               iconName: 'Brunch'
             }
@@ -68,6 +79,7 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
           {
             key: 'guarnicion',
             name: 'Guarnicion',
+            onClick: ()=> this.newItemGuarnicion(),
             iconProps: {
               iconName: 'Breakfast'
             }
@@ -105,11 +117,48 @@ export default class BarraComandos extends React.Component<IBarraComandosProps, 
     });
   }
 
-  private closePanel(){
+  private closePanelCarta(){
     this.setState({
       showNewItemCartaPanel: false
     });
   }
+
+  private newItemGuarnicion() {
+    this.setState({
+      showNewItemGuarnicionPanel: true
+    });
+  }
+
+  private closePanelGuarnicion(){
+    this.setState({
+      showNewItemGuarnicionPanel: false
+    });
+  }
+
+  private newItemCategorias() {
+    this.setState({
+      showNewItemCategoriasPanel: true
+    });
+  }
+
+  private closePanelCategorias(){
+    this.setState({
+      showNewItemCategoriasPanel: false
+    });
+  }
+
+  private newItemIngredientes() {
+    this.setState({
+      showNewItemIngredientesPanel: true
+    });
+  }
+
+  private closePanelIngredientes(){
+    this.setState({
+      showNewItemIngredientesPanel: false
+    });
+  }
+
 }
 
 

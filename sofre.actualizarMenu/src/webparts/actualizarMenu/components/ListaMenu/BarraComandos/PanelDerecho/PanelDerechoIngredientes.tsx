@@ -1,34 +1,51 @@
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import * as React from 'react';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { Label } from 'office-ui-fabric-react/lib/Label';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+
 
 export interface IPanelStates{
     showPanel: boolean;
 }
 
 export interface IPanelProps{
-    newItem: boolean;
+    onClose: Function;
 }
 
-export default class PanelDerechoIngredientes extends React.Component<IPanelProps, IPanelStates> {
+export default class PanelDerechoGuarnicion extends React.Component<IPanelProps, IPanelStates> {
     public state = {
-        showPanel: false
+        showPanel: true
     }
 
     public render(){
+      const textFieldIdNombre = getId('nombre');
         return(
             <Panel
                 isOpen={this.state.showPanel}
                 type={PanelType.smallFixedFar}
                 onDismiss={this._hidePanel}
-                headerText=""
+                headerText="Ingredientes"
                 onRenderFooterContent={this._onRenderFooterContent}
             >
 
             {/* TU CONTENIDO ACÁ */}
 
 
-
+            <Label htmlFor={textFieldIdNombre}>Nombre:</Label>
+            <TextField  id={textFieldIdNombre} />
+            <Toggle 
+                defaultChecked={true}
+                label='Disponibilidad'
+                onAriaLabel='This toggle is checked. Press to uncheck.'
+                offAriaLabel='This toggle is unchecked. Press to check.'
+                onText='On'
+                offText='Off'
+                onFocus={() => console.log('onFocus called')}
+                onBlur={() => console.log('onBlur called')}
+            />
             {/* TU CONTENIDO ACÁ */}
             </Panel>
 
@@ -51,7 +68,9 @@ export default class PanelDerechoIngredientes extends React.Component<IPanelProp
     };
 
     private _hidePanel = () => {
+    this.props.onClose();
     this.setState({ showPanel: false });
+
     };
 
     // private _newItem(){
@@ -59,4 +78,3 @@ export default class PanelDerechoIngredientes extends React.Component<IPanelProp
     //         <div></div>
     //     )
     }
-

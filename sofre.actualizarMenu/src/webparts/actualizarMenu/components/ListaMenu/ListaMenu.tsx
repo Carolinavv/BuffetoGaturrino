@@ -52,7 +52,7 @@ export default class ListaMenu extends React.Component< any, IListaMenuStates>{
     }
 
     public addItem(){
-        alert("HOLAS DESDE HOLA")
+        alert("HOLAS DESDE HOLA CUIDADO CON YERPOING")
         // this._lstCarta.addItem("Pizza", "Pasta", true, 200);
         // this.updateLists()
     }
