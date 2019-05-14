@@ -10,6 +10,8 @@ import {
 import * as strings from 'ReportePorUsuarioWebPartStrings';
 import ReportePorUsuario from './components/ReportePorUsuario';
 import { IReportePorUsuarioProps } from './components/IReportePorUsuarioProps';
+import "@pnp/polyfill-ie11";  
+import { sp } from "@pnp/sp";
 
 export interface IReportePorUsuarioWebPartProps {
   description: string;
@@ -17,11 +19,20 @@ export interface IReportePorUsuarioWebPartProps {
 
 export default class ReportePorUsuarioWebPart extends BaseClientSideWebPart<IReportePorUsuarioWebPartProps> {
 
+  public onInit(): Promise<void> {
+    return super.onInit().then(_ => {
+      sp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
+
   public render(): void {
     const element: React.ReactElement<IReportePorUsuarioProps > = React.createElement(
       ReportePorUsuario,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        context: this.context,
       }
     );
 
