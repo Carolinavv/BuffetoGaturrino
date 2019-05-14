@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="User" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">gmolina@gtr487.onmicrosoft.com</Value>
+      <Value Profile="(Default)">gmolina@sofrecom.com.ar</Value>
     </Setting>
     <Setting Name="Pass" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">GTR487mor816Sc</Value>
     </Setting>
     <Setting Name="URL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">https://gtr487.sharepoint.com/sites/bGaturrin/</Value>
+      <Value Profile="(Default)">https://srtisofrecom.sharepoint.com/sites/CEP/</Value>
     </Setting>
   </Settings>
 </SettingsFile>

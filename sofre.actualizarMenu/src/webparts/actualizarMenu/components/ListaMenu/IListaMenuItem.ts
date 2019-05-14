@@ -1,6 +1,7 @@
 export default interface IlistaMenuItem{
-    nombre: string,
-    categoria: string,
-    disponibilidad: boolean,
-    precio: number
+    ID: number;
+    Titulo: string;
+    Categoria: string;
+    Disponibilidad: any;
+    Precio: number;
 }

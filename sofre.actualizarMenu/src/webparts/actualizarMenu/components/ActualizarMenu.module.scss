@@ -27,6 +27,10 @@
     @include ms-fontColor-white;
   }
 
+  h1{
+    text-align: center;
+  }
+
   .subTitle {
     @include ms-font-l;
     @include ms-fontColor-white;
