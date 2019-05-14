@@ -4,24 +4,36 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneButton
 } from '@microsoft/sp-webpart-base';
+import pnp from 'sp-pnp-js';
 
 import * as strings from 'ActualizarMenuWebPartStrings';
 import ActualizarMenu from './components/ActualizarMenu';
 import { IActualizarMenuProps } from './components/IActualizarMenuProps';
+import { PnPClientStorage } from '@pnp/common';
 
 export interface IActualizarMenuWebPartProps {
-  description: string;
+  title: string;
 }
 
 export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActualizarMenuWebPartProps> {
+
+
+  public onInit(): Promise<void> {
+    return super.onInit().then(_=>{
+      pnp.setup({
+        spfxContext: this.context
+      });
+    });
+  }
 
   public render(): void {
     const element: React.ReactElement<IActualizarMenuProps > = React.createElement(
       ActualizarMenu,
       {
-        description: this.properties.description
+        title: this.properties.title || strings.TitleFieldLabel
       }
     );
 
@@ -41,14 +53,14 @@ export default class ActualizarMenuWebPart extends BaseClientSideWebPart<IActual
       pages: [
         {
           header: {
-            description: strings.PropertyPaneDescription
+            description: strings.PropertyPaneTitle,
           },
           groups: [
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneTextField('title', {
+                  label: strings.TitleFieldLabel
                 })
               ]
             }

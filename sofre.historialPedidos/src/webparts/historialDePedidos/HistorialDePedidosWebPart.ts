@@ -4,12 +4,14 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PopupWindowPosition
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'HistorialDePedidosWebPartStrings';
 import HistorialDePedidos from './components/HistorialDePedidos';
 import { IHistorialDePedidosProps } from './components/IHistorialDePedidosProps';
+import pnp from "sp-pnp-js";
 
 export interface IHistorialDePedidosWebPartProps {
   description: string;
@@ -17,6 +19,13 @@ export interface IHistorialDePedidosWebPartProps {
 
 export default class HistorialDePedidosWebPart extends BaseClientSideWebPart<IHistorialDePedidosWebPartProps> {
 
+  public onInit(): Promise<void> {
+    return super.onInit().then(_ => {
+    pnp.setup({
+        spfxContext: this.context
+        });
+    });
+  }
   public render(): void {
     const element: React.ReactElement<IHistorialDePedidosProps > = React.createElement(
       HistorialDePedidos,

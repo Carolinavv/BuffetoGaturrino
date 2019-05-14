@@ -1,3 +1,3 @@
 export interface IActualizarMenuProps {
-  description: string;
+  title: string;
 }

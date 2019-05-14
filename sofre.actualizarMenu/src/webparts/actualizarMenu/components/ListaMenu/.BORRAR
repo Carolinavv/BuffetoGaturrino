@@ -1,0 +1,19 @@
+Carta
+    ID
+    Titulo
+    Categoria
+    Disponibidad
+    precio
+
+Guarnicion
+    ID
+    Titulo
+    Disponibilidad
+
+Ingredientes 
+    ID
+    Titulo
+    Disponibilidad
+
+ .select("Id", "Title", "carCategoria/Title")
+.expand("carCategoria")

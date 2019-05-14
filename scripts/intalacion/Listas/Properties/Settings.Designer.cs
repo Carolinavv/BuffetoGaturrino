@@ -25,7 +25,7 @@ namespace Listas.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("gmolina@gtr487.onmicrosoft.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("gmolina@sofrecom.com.ar")]
         public string User {
             get {
                 return ((string)(this["User"]));
@@ -34,7 +34,7 @@ namespace Listas.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("GTR487mor816Sc")]
         public string Pass {
             get {
                 return ((string)(this["Pass"]));
@@ -43,7 +43,7 @@ namespace Listas.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://gtr487.sharepoint.com/sites/bGaturrin/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://srtisofrecom.sharepoint.com/sites/CEP/")]
         public string URL {
             get {
                 return ((string)(this["URL"]));

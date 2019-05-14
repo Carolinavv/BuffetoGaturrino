@@ -1,5 +1,5 @@
-import IListaDePedidos from '../Lista/IListaDePedidos';
+import { IListaDePedidos } from '../Lista/IListaDePedidos';
 
-export default interface IListaDePedidosState {
+export  interface IListaDePedidosState {
     items: IListaDePedidos[];
   }
