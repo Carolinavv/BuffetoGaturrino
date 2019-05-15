@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './GenerarPedido.module.scss';
+import styles from './GenerarPedido.module.scss'
 import { IGenerarPedidoProps } from './IGenerarPedidoProps';
 import { IGenerarPedidoState } from './IGenerarPedidoState';
 import { escape } from '@microsoft/sp-lodash-subset';
@@ -29,6 +29,8 @@ export default class GenerarPedido extends React.Component<IGenerarPedidoProps, 
       showPanel: false
     };
     // this.getListGuarni = this.getListGuarni.bind(this);
+
+    
   }
 
   public componentDidMount() {
